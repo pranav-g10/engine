@@ -55,9 +55,12 @@ module Locomotive
             FileUtils.cp_r "#{Rails.root}/public/sites/#{from_site.id.to_s}/theme/.", "#{Rails.root}/public/sites/#{self.id.to_s}/theme/."
 
             # copying metafields
-            self.update(metafields: metafields, metafields_ui: from_site.metafields_ui,
+            self.update(metafields: from_site.metafields, metafields_ui: from_site.metafields_ui,
                         metafields_schema: from_site.metafields_schema)
             self.update("metafields_ui.is_theme" => false)
+
+           # content entries
+           #  valid_entries
 
           end
 
