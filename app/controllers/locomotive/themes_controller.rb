@@ -10,6 +10,7 @@ module Locomotive
     def activate
       authorize(current_site, :update?)
       current_site.activate_theme(params[:site_id])
+      redirect_to :dashboard
     end
 
   end

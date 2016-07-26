@@ -15,5 +15,4 @@ div class="cont"
             #change-template-modal.modal_template data-id="apex" style=("display: none;") 
               h2 Activate Template
               p Feel free to try out different templates. We'll preserve your past settings for each template.
-              a.btn.btn-info.change-template href="#"  Activate Template
-              a.cancel href="#"  Cancel
+              = link_to 'Activate Template',activate_path(site_id: site.id), class: 'btn btn-info'
