@@ -40,5 +40,9 @@ module Locomotive
       fields.map { |field| [field.label, field._id] }
     end
 
+    def content_type_hide(content_type)
+      true unless content_type.name != "Properties" && content_type.name != "Values"
+    end
+
   end
 end
