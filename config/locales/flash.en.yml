@@ -91,3 +91,8 @@ en:
           update:
             notice: "Field was successfully updated."
             alert: "Field was not updated."
+
+      themes:
+        activate:
+          notice: "Theme was successfully activated."
+          alert: "Some thing went wrong, try again to activate theme."
