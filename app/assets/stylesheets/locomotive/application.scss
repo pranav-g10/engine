@@ -6,6 +6,7 @@
 //= require locomotive/bootstrap-switch
 //= require locomotive/bootstrap-colorpicker
 //= require locomotive/highlightjs/github
+//= require landing_page/agency
 
 // Bootstrap overrides
 // =============================================================================
@@ -117,5 +118,6 @@
 @import "old/developers";
 @import "new/theme";
 @import "jquery.fancybox";
+@import "agency";
 
 
