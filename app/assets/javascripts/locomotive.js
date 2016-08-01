@@ -36,7 +36,15 @@ $(document).ready(function() {
       }
     
     });
-    
+    $('.dropdown').on("click",function(e)
+    {
+        if ($('.nav-tabs li.active').text() == 'Restore') {
+            $('.text-right').hide();
+        }
+
+    });
+
+
     $(".fancybox").fancybox({
       helpers : {
        overlay: {
@@ -48,6 +56,18 @@ $(document).ready(function() {
     // or your preferred hex color value
        } // overlay
       } // helpers
+    });
+
+
+
+
+    $('.restore-btn').on("click",function(e) {
+        $(".sidebar, .navigation").css("z-index", "-1");
+    });
+
+
+    $(".restore-modal").on("hidden.bs.modal", function () {
+        $(".sidebar, .navigation").css("z-index", "100");
     });
 
 });

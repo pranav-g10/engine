@@ -17,8 +17,8 @@
     = f.action
   br
   = form_tab_pane "restore" do
-    = link_to 'restore default', "", :class => "btn btn-primary", title: '', data: { toggle: 'modal', target: '#myModal' }
-  #myModal.modal.fade role="dialog"
+    = link_to 'restore default', "", :class => "btn btn-primary restore-btn", title: '', data: { toggle: 'modal', target: '#myModal' }
+  #myModal.modal.restore-modal.fade role="dialog"
     .modal-dialog
       /! Modal content
       .modal-content
