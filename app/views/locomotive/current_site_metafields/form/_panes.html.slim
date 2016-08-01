@@ -17,5 +17,13 @@
     = f.action
   br
   = form_tab_pane "restore" do
-    = link_to 'restore default', {controller: "current_site_metafields", action: "restore_default"}, :class => "btn btn-primary"
-
+    = link_to 'restore default', "", :class => "btn btn-primary", title: '', data: { toggle: 'modal', target: '#myModal' }
+  #myModal.modal.fade role="dialog"
+    .modal-dialog
+      /! Modal content
+      .modal-content
+        .modal-body
+          p Changes will not be undone.
+        .modal-footer
+          = link_to 'OK', {controller: "current_site_metafields", action: "restore_default"}, :class => "btn btn-primary"
+          button.btn.btn-default data-dismiss="modal" type="button"  Close

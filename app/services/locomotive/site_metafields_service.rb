@@ -21,15 +21,12 @@ module Locomotive
     end
 
     def restore
-      property_type = Locomotive::ContentType.find_by(name: 'Properties')
+      property_type = Locomotive::ContentType.by_id_or_slug('properties').first
       default_fields = property_type.entries.map(&:title)
-      property_type = Locomotive::ContentType.find_by(name: 'Properties')
-      values_type = Locomotive::ContentType.find_by(name: "Values")
       property_entries = property_type.entries
-      values_entries = values_type.entries
       default_fields.each do |field|
         type = property_entries.find_by(title: field)
-        values = values_entries.where(property_id: type.id.to_s)
+        values = type.values
         keys = site.metafields[field].keys
         keys.each do |key1|
           site.metafields[field][key1]  = values.find_by(name: key1).value

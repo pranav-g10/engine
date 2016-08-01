@@ -38,17 +38,17 @@ $(document).ready(function() {
     });
     
     $(".fancybox").fancybox({
-  helpers : { 
-   overlay: {
-    opacity: 0.8,
-    onComplete: function() {
-      $("#fancybox-wrap").css({'top':'20px', 'bottom':'auto'});
-   },  // or the opacity you want 
-    css: {'background': 'rgba(255, 255, 255, 0.972549)'},
-// or your preferred hex color value
-   } // overlay 
-  } // helpers
-});
+      helpers : {
+       overlay: {
+        opacity: 0.8,
+        onComplete: function() {
+          $("#fancybox-wrap").css({'top':'20px', 'bottom':'auto'});
+       },  // or the opacity you want
+        css: {'background': 'rgba(255, 255, 255, 0.972549)'},
+    // or your preferred hex color value
+       } // overlay
+      } // helpers
+    });
 
 });
 
