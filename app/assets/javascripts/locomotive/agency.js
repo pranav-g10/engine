@@ -1,11 +1,17 @@
-// Agency Theme JavaScript
-
-(function($) {
+/*!
+ * aganecy - jQuery Plugin
+ * version: 2.1.5 (Fri, 14 Jun 2013)
+ * @requires jQuery v1.6 or later
+ *
+ *
+ */
+(function (window, document, $, undefined) {
     "use strict"; // Start of use strict
-
     // jQuery for page scrolling feature - requires jQuery Easing plugin
+    $('a.page-scroll').hover(function(){
+        alert('cl')
+    })
     $('a.page-scroll').bind('click', function(event) {
-        alert('sss');
         var $anchor = $(this);
         $('html, body').stop().animate({
             scrollTop: ($($anchor.attr('href')).offset().top - 50)
@@ -31,4 +37,4 @@
         }
     })
 
-})(jQuery); //   End of use strict
+}(window, document, jQuery)); //   End of use strict
