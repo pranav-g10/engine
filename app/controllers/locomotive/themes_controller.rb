@@ -9,7 +9,12 @@ module Locomotive
 
     def activate
       authorize(current_site, :update?)
-      current_site.activate_theme(params[:site_id])
+      if current_site.activate_theme(params[:site_id])
+        flash[:notice] = I18n.t('flash.locomotive.themes.activate.notice')
+      else
+        flash[:alert] = I18n.t('flash.locomotive.themes.activate.alert')
+      end
+      redirect_to :dashboard
     end
 
   end

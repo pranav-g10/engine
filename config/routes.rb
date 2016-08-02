@@ -2,6 +2,8 @@
 
 Locomotive::Engine.routes.draw do
 
+  get 'page' => 'about#page', as: :about_page
+
   # Authentication
   devise_for :locomotive_account,
     class_name:   'Locomotive::Account',
