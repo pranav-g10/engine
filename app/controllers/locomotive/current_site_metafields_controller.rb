@@ -22,8 +22,7 @@ module Locomotive
 
     def restore_default
       authorize @site, :update?
-      # service.restore
-      # respond_with @site,:location => current_site_metafields_path(current_site)
+      service.restore
       redirect_to action: "index"
     end
 

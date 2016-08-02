@@ -63,19 +63,39 @@ $(document).ready(function(){
       }
     
     });
-    
+    $('.dropdown').on("click",function(e)
+    {
+        if ($('.nav-tabs li.active').text() == 'Restore') {
+            $('.text-right').hide();
+        }
+
+    });
+
+
     $(".fancybox").fancybox({
-  helpers : { 
-   overlay: {
-    opacity: 0.8,
-    onComplete: function() {
-      $("#fancybox-wrap").css({'top':'20px', 'bottom':'auto'});
-   },  // or the opacity you want 
-    css: {'background': 'rgba(255, 255, 255, 0.972549)'},
-// or your preferred hex color value
-   } // overlay 
-  } // helpers
-});
+      helpers : {
+       overlay: {
+        opacity: 0.8,
+        onComplete: function() {
+          $("#fancybox-wrap").css({'top':'20px', 'bottom':'auto'});
+       },  // or the opacity you want
+        css: {'background': 'rgba(255, 255, 255, 0.972549)'},
+    // or your preferred hex color value
+       } // overlay
+      } // helpers
+    });
+
+
+
+
+    $('.restore-btn').on("click",function(e) {
+        $(".sidebar, .navigation").css("z-index", "-1");
+    });
+
+
+    $(".restore-modal").on("hidden.bs.modal", function () {
+        $(".sidebar, .navigation").css("z-index", "100");
+    });
 
 });
 
