@@ -1,6 +1,6 @@
 class Package
 
-  include Locomotive::Mongoid::Document
+  include Mongoid::Document
 
   ## fields ##
   field :name, type: String
@@ -13,4 +13,6 @@ class Package
   ## validations ##
   validates_presence_of :name
   validates_uniqueness_of :name
+
+  has_many :invoices
 end
