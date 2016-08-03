@@ -1,5 +1,5 @@
-Locomotive.Views.Plans ||= {}
+Locomotive.Views.Packages ||= {}
 
-class Locomotive.Views.Plans.IndexView extends Backbone.View
+class Locomotive.Views.Packages.IndexView extends Backbone.View
 
   el: '.main'

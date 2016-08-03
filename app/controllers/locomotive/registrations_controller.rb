@@ -14,7 +14,7 @@ module Locomotive
 
     def after_sign_up_path_for(resource)
       # sites_path
-      plans_path
+      packages_path
       # main_app.packages_path(account: resource)
     end
 

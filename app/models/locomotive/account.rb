@@ -27,6 +27,7 @@ module Locomotive
     field :name
     field :locale,  default: Locomotive.config.default_locale.to_s or 'en'
     field :super_admin, type: Boolean, default: false
+    field :trial_expired, type: Boolean, default: false
 
     ## validations ##
     validates_presence_of :name
