@@ -23,8 +23,8 @@ Locomotive::Engine.routes.draw do
   root to: 'sites#index'
 
   resources :sites
-  resources :plans, only: :index do
-    get :activate, on: :collection
+  resources :packages, only: :index do
+    get :activate, on: :member
   end
 
   resource :my_account, controller: 'my_account' do

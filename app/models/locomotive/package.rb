@@ -1,5 +1,5 @@
 module Locomotive
-  class Plan
+  class Package
 
     include Locomotive::Mongoid::Document
 
@@ -18,8 +18,8 @@ module Locomotive
     belongs_to :actor,      class_name: 'Locomotive::Account', validate: false, autosave: false
 
     ## validations ##
-    validates_presence_of :name
-    validates_uniqueness_of :name
+    # validates_presence_of :name
+    # validates_uniqueness_of :name
 
     ## indexes ##
     # index site_id: 1
