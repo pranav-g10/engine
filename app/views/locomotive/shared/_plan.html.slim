@@ -19,7 +19,7 @@ section#pricing.bg-light-gray
               - package.limitation.each do |key, value|
                 = value
                 br
-                = package.site_count
+              = package.site_count
       - Locomotive::Package.where(expire_type: "monthly").each do |package|
         .col-sm-3 style="background-color: white;"
           .team-member
