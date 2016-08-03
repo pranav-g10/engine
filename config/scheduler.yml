@@ -1,0 +1,3 @@
+free_trial_usage_alert:
+  cron: "0 0 * * *"
+  class: "TrialPackage"

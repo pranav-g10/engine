@@ -16,7 +16,7 @@ module Locomotive
     ## associations ##
     # belongs_to :site,       class_name: 'Locomotive::Site', validate: false, autosave: false
     belongs_to :actor,      class_name: 'Locomotive::Account', validate: false, autosave: false
-    has_one :account_package, class_name: 'Locomotive::AccountPackage'
+    has_many   :account_packages, class_name: 'Locomotive::AccountPackage'
 
     ## validations ##
     # validates_presence_of :name
