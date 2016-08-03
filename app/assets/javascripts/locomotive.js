@@ -109,6 +109,26 @@ $(document).ready(function(){
 
     });
 
+    $("#submit-contact ").on("click",function(e) {
+        e.preventDefault();
+        var name = $('#name').val();
+        var email = $('#email').val();
+        var phone = $('#phone').val();
+        var message = $('#message').val();
+        $.ajax({url:"contact_us",
+                method: "POST",
+                dataType: "json",
+                data: {"name" : name,
+                        "email" : email,
+                        "phone" : phone,
+                        "message" : message},
+                success:function(result){
+                    
+        }});
+    });
+
+
+
 });
 
 

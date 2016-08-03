@@ -3,6 +3,8 @@
 Locomotive::Engine.routes.draw do
 
   get 'page' => 'about#page', as: :about_page
+  post 'contact_us' => 'about#contact_us'
+
 
   # Authentication
   devise_for :locomotive_account,

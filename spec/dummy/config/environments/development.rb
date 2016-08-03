@@ -36,11 +36,11 @@ Dummy::Application.configure do
 
   # MockSmtp settings
   config.action_mailer.delivery_method = :smtp
-  config.action_mailer.smtp_settings = {
-    :address => "localhost",
-    :port => 1025,
-    :domain => "example.com"
-  }
+  # config.action_mailer.smtp_settings = {
+  #   :address => "localhost",
+  #   :port => 1025,
+  #   :domain => "example.com"
+  # }
 
   # config.log_level = :info
 end
