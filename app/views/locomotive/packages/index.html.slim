@@ -17,7 +17,7 @@ section
           'Unlimited Paged'
           br
           '5000 Images'
-        = link_to 'Free Trial','', class: 'btn btn-primary'
+        = link_to 'Free Trial', activate_package_path(Locomotive::Package.first), class: 'btn btn-primary'
         /button.btn.btn-primary data-url=plans_path
       .col-sm-4.panel-body
         h4 Professional
