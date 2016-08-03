@@ -23,6 +23,9 @@ Locomotive::Engine.routes.draw do
   root to: 'sites#index'
 
   resources :sites
+  resources :plans, only: :index do
+    get :activate, on: :collection
+  end
 
   resource :my_account, controller: 'my_account' do
     put :regenerate_api_key, on: :member

@@ -13,7 +13,8 @@ module Locomotive
     private
 
     def after_sign_up_path_for(resource)
-      sites_path
+      # sites_path
+      main_app.packages_path
     end
 
     def configure_permitted_parameters
