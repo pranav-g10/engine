@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   match '/foo' => 'foo#index', as: 'foo', via: :all
 
   resources :packages, only: :index do
-    get :activate, on: :collection
+    get :activate, on: :member
   end
 
   # Back-office

@@ -17,7 +17,7 @@ section
           'Unlimited Paged'
           br
           '5000 Images'
-        = link_to 'Free Trial',activate_packages_path, class: 'btn btn-primary'
+        = link_to 'Free Trial',activate_package_path(params[:account]), class: 'btn btn-primary'
       .col-sm-4.panel-body
         h4 Professional
         hr
@@ -29,7 +29,7 @@ section
           '100 Pages'
           br
           '1000 Images'
-        button.btn.btn-primary Professional
+        = link_to 'Professional',activate_package_path(params[:account]), class: 'btn btn-primary'
       .col-sm-4.panel-body
         h4 Basic
         hr
@@ -41,4 +41,4 @@ section
           '10 Pages'
           br
           '100 Images'
-        button.btn.btn-primary Basic
+        = link_to 'Basic',activate_package_path(params[:account]), class: 'btn btn-primary'
