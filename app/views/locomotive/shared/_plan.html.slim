@@ -5,48 +5,69 @@ section#pricing.bg-light-gray
         h2.section-heading Try Pixlyz free for 10 Days, and pick a plan later
         h3.section-subheading.text-muted No credit card required. No obligation. No risk.
 
+    .row.monthly-price
+      - Locomotive::Package.find_by(name: "Trial") do |package|
+        .col-sm-3 style="background-color: white;"
+          .team-member
+            h4
+              = package.name
+            hr
+            h4
+              = package.price
+            hr
+            p.text-muted
+              - package.limitation.each do |key, value|
+                = value
+                br
+                = package.site_count
+      - Locomotive::Package.where(expire_type: "monthly").each do |package|
+        .col-sm-3 style="background-color: white;"
+          .team-member
+            h4
+              = package.name
+            hr
+            h4
+              = package.price
+            hr
+            p.text-muted
+              - package.limitation.each do |key, value|
+                = value
+                br
+              = package.site_count
+
+    .row.yearly-price
+      - Locomotive::Package.find_by(name: "Trial") do |package|
+        .col-sm-3 style="background-color: white;"
+          .team-member
+            h4
+              = package.name
+            hr
+            h4
+              = package.price
+            hr
+            p.text-muted
+              - package.limitation.each do |key, value|
+                = value
+                br
+                = package.site_count
+      - Locomotive::Package.where(expire_type: "yearly").each do |package|
+        .col-sm-3 style=" background-color: white;"
+          .team-member
+            h4
+              = package.name
+            hr
+            h4
+              = package.price
+            hr
+            p.text-muted
+              - package.limitation.each do |key, value|
+                = value
+                br
+              = package.site_count
     .row
-      .col-sm-4 style="background-color: white;"
-        .team-member
-          h4 Agency
-          hr
-          h4 $ 19/mo
-          hr
-          p.text-muted
-            'Unlimited Projects'
-            br
-            'Unlimited Paged'
-            br
-            '5000 Images'
-      .col-sm-4 style="background-color: white;"
-        .team-member
-          h4 Professional
-          hr
-          h4 $ 8/mo
-          hr
-          p.text-muted
-            '100 Projects'
-            br
-            '100 Pages'
-            br
-            '1000 Images'
-      .col-sm-4 style="background-color: white;"
-        .team-member
-          h4 Basic
-          hr
-          h4 $ 7/mo
-          hr
-          p.text-muted
-            '10 Projects'
-            br
-            '10 Pages'
-            br
-            '100 Images'
-    .row
-      .col-lg-8.col-lg-offset-2.text-center
-        p.large.text-muted Best Deal
-      .row
-        .col-lg-8.col-lg-offset-2.text-center
-          label.switch
-            input type="checkbox" /
-            .slider.round
+      .col-lg-12.text-center
+        span monthly billing
+        label.switch
+          input type="checkbox" /
+          .slider.round
+        span yearly billing
