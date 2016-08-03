@@ -16,6 +16,7 @@ module Locomotive
     ## associations ##
     # belongs_to :site,       class_name: 'Locomotive::Site', validate: false, autosave: false
     belongs_to :actor,      class_name: 'Locomotive::Account', validate: false, autosave: false
+    has_one :account_package, class_name: 'Locomotive::AccountPackage'
 
     ## validations ##
     # validates_presence_of :name
@@ -24,6 +25,10 @@ module Locomotive
     ## indexes ##
     # index site_id: 1
     # index site_id: 1, created_at: 1
+
+    def free_trial?
+      self.name == 'Trial'
+    end
 
   end
 end
