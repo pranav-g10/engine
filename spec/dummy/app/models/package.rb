@@ -11,6 +11,6 @@ class Package
   field :limitation, type: Hash # no of pages, no of projects
 
   ## validations ##
-  validates_presence_of :name
-  validates_uniqueness_of :name
+  # validates_presence_of :name
+  # validates_uniqueness_of :name
 end
