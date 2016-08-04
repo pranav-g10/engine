@@ -4,8 +4,8 @@ module Locomotive
     include Locomotive::Mongoid::Document
 
     # fields
-    fields :days_left, type: Integer
-    fields :start_at, type: Date, default: Date.today
+    field :days_left, type: Integer
+    field :start_at, type: Date, default: Date.today
 
     ## associations ##
     belongs_to :actor,      class_name: 'Locomotive::Account', validate: false, autosave: false
