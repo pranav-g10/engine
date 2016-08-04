@@ -1,0 +1,21 @@
+- Locomotive::Package.find_by(name: "Trial") do |package|
+  .col-sm-3
+    h4
+      = package.name
+    hr
+    h4
+      = package.price
+    hr
+    p.text-muted
+      - package.limitation.each do |key, value|
+        strong
+          = value
+        '
+        = key.capitalize
+        br
+      strong
+        = package.site_count
+      '
+      'Site
+    br
+      = link_to 'Free Trial', activate_package_path(package), class: 'btn btn-primary'
