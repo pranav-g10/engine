@@ -45,3 +45,5 @@ html xmlns='http://www.w3.org/1999/xhtml'
       /             h1 Right sidebar
 
       = yield :foot
+    - if current_locomotive_account.account_package.package.free_trial?
+      = render 'locomotive/shared/footer'
