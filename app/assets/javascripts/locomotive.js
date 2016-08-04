@@ -123,7 +123,7 @@ $(document).ready(function(){
                         "phone" : phone,
                         "message" : message},
                 success:function(result){
-                    
+
         }});
     });
 
