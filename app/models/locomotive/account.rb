@@ -96,5 +96,15 @@ module Locomotive
       end
     end
 
+    def self.activate
+      activate_account = []
+      Locomotive::AccountPackage.all.each do |ap|
+        if ap.is_active?
+          activate_account << ap
+        end
+      end
+      activate_account
+    end
+
   end
 end

@@ -4,7 +4,7 @@ module Locomotive
     include Locomotive::Mongoid::Document
 
     ## fields ##
-    field :invoice_no, type: Integer
+    field :invoice_no, type: Integer, default:  ->{ SecureRandom.random_number(999999) }
     field :date, type: Date
     field :status, type: String
     field :description, type: String

@@ -18,6 +18,12 @@ module Locomotive
         mail( :to => email,
               :subject => 'Notification about Plan' )
       end
+
+      def send_invoice(email, file, file_name)
+        @email = email
+        attachments[file_name] = file
+        mail to: email, subject: "invoice"
+      end
     end
 
 end

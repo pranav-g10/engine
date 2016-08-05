@@ -13,6 +13,8 @@ gem 'coveralls',    '~> 0.7.2', require: false
 gem 'mongoid'
 gem 'railroady'
 gem "sidekiq-cron", "~> 0.4.0"
+gem 'prawn'
+gem 'prawn-table'
 # gem 'active_merchant_payu_in'
 
 group :test, :development do
