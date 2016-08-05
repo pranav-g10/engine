@@ -97,6 +97,7 @@ $(document).ready(function(){
         $(".sidebar, .navigation").css("z-index", "100");
     });
 
+
     $("input:checkbox").on("change", function(){
         if($('input:checkbox').is(':checked')){
             $('.yearly-price').show();

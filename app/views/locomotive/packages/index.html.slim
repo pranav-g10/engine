@@ -4,11 +4,12 @@ section
       .col-lg-12.text-center
         h2.section-heading Try Pixlyz free for 10 Days, and pick a plan later
         h3.section-subheading.text-muted No credit card required. No obligation. No risk.
-
-    .row.monthly-price
-      - Locomotive::Package.find_by(name: "Trial") do |package|
-        .col-sm-3
-          .team-member
+    - arr = %w{monthly yearly}
+    - arr.each do |a|
+      .row class="#{a}-price"
+        = render 'locomotive/packages/free_trial'
+        - Locomotive::Package.where(expire_type: a).each do |package|
+          .col-sm-3
             h4
               = package.name
             hr
@@ -17,61 +18,19 @@ section
             hr
             p.text-muted
               - package.limitation.each do |key, value|
-                = value
+                strong
+                  = value
+                '
+                = key.capitalize
                 br
+              strong
                 = package.site_count
-            br
-              = link_to 'Free Trial', activate_package_path(package), class: 'btn btn-primary'
-      - Locomotive::Package.where(expire_type: "monthly").each do |package|
-        .col-sm-3
-          .team-member
-            h4
-              = package.name
-            hr
-            h4
-              = package.price
-            hr
-            p.text-muted
-              - package.limitation.each do |key, value|
-                = value
-                br
-                = package.site_count
+              '
+              'Sites
             br
               = link_to "#{package.name}", activate_package_path(package), class: 'btn btn-primary'
-
-    .row.yearly-price
-      - Locomotive::Package.find_by(name: "Trial") do |package|
-        .col-sm-3
-          .team-member
-            h4
-              = package.name
-            hr
-            h4
-              = package.price
-            hr
-            p.text-muted
-              - package.limitation.each do |key, value|
-                = value
-                br
-                = package.site_count
-            br
-              = link_to 'Free Trial', activate_package_path(package), class: 'btn btn-primary'
-      - Locomotive::Package.where(expire_type: "yearly").each do |package|
-        .col-sm-3
-          .team-member
-            h4
-              = package.name
-            hr
-            h4
-              = package.price
-            hr
-            p.text-muted
-              - package.limitation.each do |key, value|
-                = value
-                br
-                = package.site_count
-            br
-              = link_to "#{package.name}", activate_package_path(package), class: 'btn btn-primary'
+    br
+    br
     .row
       .col-lg-12.text-center
         span monthly billing
