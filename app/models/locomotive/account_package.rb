@@ -4,7 +4,7 @@ module Locomotive
     include Locomotive::Mongoid::Document
 
     # fields
-    field :days_left, type: Integer, default: ->{ no_of_days_left }
+    field :days_left, type: Integer
     field :start_at, type: Date, default: Date.today
 
     ## associations ##
@@ -12,6 +12,8 @@ module Locomotive
     belongs_to :package,    class_name: 'Locomotive::Package', validate: false, autosave: false
     has_many :invoices, class_name: 'Locomotive::Invoice'
     # index({ package_id: 1, actor_id: 1 }, { unique: true, background: true })
+
+    after_create :no_of_days_left
 
     def is_active?
       if package.expire_after > (Date.today - start_at).to_i
@@ -21,8 +23,9 @@ module Locomotive
       end
     end
 
+
     def no_of_days_left
-      package.expire_after
+      update!(days_left: package.expire_after)
     end
   end
 end
