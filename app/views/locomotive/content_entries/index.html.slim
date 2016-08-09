@@ -1,5 +1,4 @@
 - title t('.title', type: @content_type.name.capitalize)
-
 - content_for :actions do
   - if @content_type.localized?
     = locale_picker_link
@@ -9,12 +8,16 @@
       i.fa.fa-pencil
       | &nbsp;
       = t('.edit_notification_settings')
-
-  = link_to new_content_entry_path(current_site, @content_type.slug), class: 'btn btn-primary btn-sm' do
-    i.fa.fa-plus
-    | &nbsp;
-    = t('.new')
-
+  - if (@content_type.name == "Projects" || @content_type.name == "Photos") && eval("#{@content_type.name.downcase}_limit_crossed?")
+    = link_to "", class: 'btn btn-primary btn-sm',title: '', data: { toggle: 'modal', target: '#myModal' } do
+      i.fa.fa-plus
+      | &nbsp;
+      = t('.new')
+  - else
+    = link_to new_content_entry_path(current_site, @content_type.slug), class: 'btn btn-primary btn-sm' do
+      i.fa.fa-plus
+      | &nbsp;
+      = t('.new')
 - if @content_type.filter_fields.present?
   .row
     .col-md-6

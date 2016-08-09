@@ -9,7 +9,9 @@
           i.fa.fa-plus.icon
           span.text= t(:new, scope: 'locomotive.pages.index')
       - else
-        = link_to packages_path do
+        = link_to "",title: '', data: { toggle: 'modal', target: '#myModal' }  do
           i.fa.fa-plus.icon
           span.text= t(:new, scope: 'locomotive.pages.index')
+
+= render 'locomotive/shared/modal'
 

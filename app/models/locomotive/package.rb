@@ -11,6 +11,7 @@ module Locomotive
     field :expire_type, type: String
     field :no_of_pages, type: Integer
     field :no_of_images, type: Integer
+    field :no_of_projects, type: Integer
     field :site_count, type: Integer
 
 

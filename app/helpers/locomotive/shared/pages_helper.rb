@@ -32,7 +32,7 @@ module Locomotive
 
 
       def page_limit_crossed?
-        if current_site.pages.count <= current_locomotive_account.account_package.package.no_of_pages
+        if current_site.pages.count < current_locomotive_account.account_package.package.no_of_pages
           false
         else
           true
