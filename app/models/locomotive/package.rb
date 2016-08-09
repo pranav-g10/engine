@@ -9,7 +9,8 @@ module Locomotive
     field :desc, type: String
     field :expire_after, type: Integer # no of days or month
     field :expire_type, type: String
-    field :limitation, type: Hash # no of pages, no of projects
+    field :no_of_pages, type: Integer
+    field :no_of_images, type: Integer
     field :site_count, type: Integer
 
 

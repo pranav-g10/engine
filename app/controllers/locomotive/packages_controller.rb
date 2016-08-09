@@ -6,8 +6,10 @@ module Locomotive
     within_site_only_if_existing true # Note: do not validate the membership
 
     before_filter :load_package, only: :activate
+    
+    layout :resolve_layout
 
-    layout '/locomotive/layouts/pricing'
+
 
     def activate
       @account_pack = Locomotive::AccountPackage.find_or_initialize_by(actor: current_locomotive_account)
@@ -24,10 +26,25 @@ module Locomotive
       end
     end
 
+    def package_detail
+      @account_package = current_locomotive_account.account_package
+      @package = current_locomotive_account.account_package.package
+    end
     private
 
     def load_package
       @package = Package.find(params[:id])
+    end
+
+    def resolve_layout
+      case action_name
+        when "activate", "index"
+          "/locomotive/layouts/pricing"
+        when "package_detail"
+          "/locomotive/layouts/account"
+        else
+          "application"
+      end
     end
 
   end
