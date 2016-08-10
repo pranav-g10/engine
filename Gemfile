@@ -15,7 +15,7 @@ gem 'railroady'
 gem "sidekiq-cron", "~> 0.4.0"
 gem 'prawn'
 gem 'prawn-table'
-# gem 'active_merchant_payu_in'
+gem 'dotenv-rails'
 
 group :test, :development do
   gem 'rspec-rails', '~> 3.2.1' #~> 2.14.2' # In order to have rspec tasks and generators

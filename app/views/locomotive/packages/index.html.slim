@@ -9,26 +9,43 @@ section
       .row class="#{a}-price"
         = render 'locomotive/packages/free_trial'
         - Locomotive::Package.where(expire_type: a).each do |package|
-          .col-sm-3
-            h4
-              = package.name
-            hr
-            h4
-              = package.price
-            hr
-            p.text-muted
-              - package.limitation.each do |key, value|
+          = form_tag 'https://test.payu.in/_payment', method: :post do
+            - txnid = SecureRandom.random_number(999999)
+            = hidden_field_tag :key, ENV["TEST_PAYU_KEY"]
+            = hidden_field_tag :amount, package.price
+            = hidden_field_tag :firstname, ENV["TEST_PAYU_firstname"]
+            = hidden_field_tag :productinfo, ENV["PRODUCT_INFO"]
+            = hidden_field_tag :email, ENV["TEST_PAYU_email"]
+            = hidden_field_tag :phone, ENV["TEST_PAYU_phone"]
+            = hidden_field_tag :surl, main_app.success_url
+            = hidden_field_tag :furl, main_app.failure_url
+            = hidden_field_tag :si, ENV['IS_RECURRENCE']
+            = hidden_field_tag :user_credentials, 'gtKFFx:smehta1289@gmail.com'
+            = hidden_field_tag :txnid, txnid
+            = hidden_field_tag :udf1, current_locomotive_account.id
+            = hidden_field_tag :udf2, package.id
+            = hidden_field_tag :hash, Digest::SHA512.hexdigest("#{ENV['TEST_PAYU_KEY']}|#{txnid}|#{package.price}|#{ENV['PRODUCT_INFO']}|#{ENV['TEST_PAYU_firstname']}|#{ENV['TEST_PAYU_email']}|#{current_locomotive_account.id}|#{package.id}|||||||||#{ENV['TEST_PAYU_SALT']}")
+            .col-sm-3
+              h4
+                = package.name
+              hr
+              h4
+                = package.price
+              hr
+              p.text-muted
+                - package.limitation.each do |key, value|
+                  strong
+                    = value
+                  '
+                  = key.capitalize
+                  br
                 strong
-                  = value
+                  = package.site_count
                 '
-                = key.capitalize
-                br
-              strong
-                = package.site_count
-              '
-              'Sites
-            br
-              = link_to "#{package.name}", activate_package_path(package), class: 'btn btn-primary'
+                'Sites
+              br
+                = button_tag "#{package.name}", class: 'btn btn-primary'
+                /= link_to "#{package.name}", activate_package_path(package), class: 'btn btn-primary'
     br
     br
     .row

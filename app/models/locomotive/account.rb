@@ -28,6 +28,9 @@ module Locomotive
     field :locale,  default: Locomotive.config.default_locale.to_s or 'en'
     field :super_admin, type: Boolean, default: false
     field :trial_in_use, type: Boolean, default: false
+    field :mihpayid, type: String
+    field :cardToken, type: String
+    field :payment_source, type: String
 
     ## validations ##
     validates_presence_of :name
