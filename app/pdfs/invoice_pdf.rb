@@ -32,8 +32,8 @@ class InvoicePdf < Prawn::Document
         end
         bounding_box([70,50], :width => 100, :height => 100) do
 
-          text "#{@invoice.invoice_no}"
-          text "#{@invoice.date}"
+          text "#{@invoice.txnid}"
+          text "#{@invoice.addedon}"
         end
     end
     #This inserts an image in the pdf file and sets the size of the image
@@ -73,7 +73,7 @@ class InvoicePdf < Prawn::Document
 
   def product_rows
     [['Description', 'status', 'Amount']] +
-          [[@invoice.description, @invoice.status, @invoice.account_package.package.price]]
+          [[@invoice.productinfo, @invoice.status, @invoice.account_package.package.price]]
   end
 
   def total_rows

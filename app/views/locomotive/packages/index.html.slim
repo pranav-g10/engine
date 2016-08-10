@@ -10,21 +10,21 @@ section
         = render 'locomotive/packages/free_trial'
         - Locomotive::Package.where(expire_type: a).each do |package|
           = form_tag 'https://test.payu.in/_payment', method: :post do
-            - txnid = SecureRandom.random_number(999999)
-            = hidden_field_tag :key, ENV["TEST_PAYU_KEY"]
+            - txnid = ShortUUID.unique
+            = hidden_field_tag :key, ENV["PAYU_KEY"]
             = hidden_field_tag :amount, package.price
-            = hidden_field_tag :firstname, ENV["TEST_PAYU_firstname"]
+            = hidden_field_tag :firstname, current_locomotive_account.name
             = hidden_field_tag :productinfo, ENV["PRODUCT_INFO"]
-            = hidden_field_tag :email, ENV["TEST_PAYU_email"]
-            = hidden_field_tag :phone, ENV["TEST_PAYU_phone"]
+            = hidden_field_tag :email, current_locomotive_account.try(:email)
+            = hidden_field_tag :phone, current_locomotive_account.try(:phone)
             = hidden_field_tag :surl, main_app.success_url
             = hidden_field_tag :furl, main_app.failure_url
             = hidden_field_tag :si, ENV['IS_RECURRENCE']
-            = hidden_field_tag :user_credentials, 'gtKFFx:smehta1289@gmail.com'
+            = hidden_field_tag :user_credentials, "#{ENV['PAYU_KEY']}:#{current_locomotive_account.email}"
             = hidden_field_tag :txnid, txnid
             = hidden_field_tag :udf1, current_locomotive_account.id
             = hidden_field_tag :udf2, package.id
-            = hidden_field_tag :hash, Digest::SHA512.hexdigest("#{ENV['TEST_PAYU_KEY']}|#{txnid}|#{package.price}|#{ENV['PRODUCT_INFO']}|#{ENV['TEST_PAYU_firstname']}|#{ENV['TEST_PAYU_email']}|#{current_locomotive_account.id}|#{package.id}|||||||||#{ENV['TEST_PAYU_SALT']}")
+            = hidden_field_tag :hash, gen_hash(package, txnid)
             .col-sm-3
               h4
                 = package.name
