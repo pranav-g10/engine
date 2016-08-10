@@ -30,6 +30,15 @@ module Locomotive
         @page_tree ||= Locomotive::PageTreeService.new(current_site).build_tree
       end
 
+
+      def page_limit_crossed?
+        if current_site.pages.count < current_locomotive_account.account_package.package.no_of_pages
+          false
+        else
+          true
+        end
+      end
+
       class Node < Struct.new(:page, :children, :controller)
 
         MAX_WIDTH = [180, 157, 134].freeze # starts at depth 2

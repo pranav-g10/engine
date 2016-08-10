@@ -1,0 +1,9 @@
+#myModal.modal.restore-modal.fade role="dialog"
+  .modal-dialog
+    /! Modal content
+    .modal-content
+      .modal-body
+        p Please upgrade your plan.
+      .modal-footer
+        = link_to 'OK', packages_path, :class => "btn btn-primary"
+        button.btn.btn-default data-dismiss="modal" type="button"  Close

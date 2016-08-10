@@ -27,6 +27,7 @@ Locomotive::Engine.routes.draw do
   resources :sites
   resources :packages, only: :index do
     get :activate, on: :member
+    get :package_detail, on: :collection
   end
 
   resource :my_account, controller: 'my_account' do

@@ -7,15 +7,19 @@
       = package.price
     hr
     p.text-muted
-      - package.limitation.each do |key, value|
-        strong
-          = value
-        '
-        = key.capitalize
-        br
       strong
-        = package.site_count
+        = package.no_of_pages
       '
-      'Site
+      'No. of Pages
+      br
+      strong
+        = package.no_of_images
+      '
+      'No. of Images
+      br
+    strong
+      = package.site_count
+    '
+    'Site
     br
       = link_to 'Free Trial', activate_package_path(package), class: 'btn btn-primary'

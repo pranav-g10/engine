@@ -16,10 +16,20 @@ section#pricing.bg-light-gray
               = package.price
             hr
             p.text-muted
-              - package.limitation.each do |key, value|
-                = value
-                br
+              strong
+                = package.no_of_pages
+              '
+              'No. of Pages
+              br
+              strong
+                = package.no_of_images
+              '
+              'No. of Images
+              br
+            strong
               = package.site_count
+            '
+            'Site
       - Locomotive::Package.where(expire_type: "monthly").each do |package|
         .col-sm-3 style="background-color: white;"
           .team-member
@@ -30,10 +40,20 @@ section#pricing.bg-light-gray
               = package.price
             hr
             p.text-muted
-              - package.limitation.each do |key, value|
-                = value
-                br
+              strong
+                = package.no_of_pages
+              '
+              'No. of Pages
+              br
+              strong
+                = package.no_of_images
+              '
+              'No. of Images
+              br
+            strong
               = package.site_count
+            '
+            'Site
 
     .row.yearly-price
       - Locomotive::Package.find_by(name: "Trial") do |package|
@@ -46,10 +66,20 @@ section#pricing.bg-light-gray
               = package.price
             hr
             p.text-muted
-              - package.limitation.each do |key, value|
-                = value
-                br
-                = package.site_count
+              strong
+                = package.no_of_pages
+              '
+              'No. of Pages
+              br
+              strong
+                = package.no_of_images
+              '
+              'No. of Images
+              br
+            strong
+              = package.site_count
+            '
+            'Site
       - Locomotive::Package.where(expire_type: "yearly").each do |package|
         .col-sm-3 style=" background-color: white;"
           .team-member
@@ -60,10 +90,20 @@ section#pricing.bg-light-gray
               = package.price
             hr
             p.text-muted
-              - package.limitation.each do |key, value|
-                = value
-                br
+              strong
+                = package.no_of_pages
+              '
+              'No. of Pages
+              br
+              strong
+                = package.no_of_images
+              '
+              'No. of Images
+              br
+            strong
               = package.site_count
+            '
+            'Site
     .row
       .col-lg-12.text-center
         span monthly billing
