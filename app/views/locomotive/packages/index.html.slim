@@ -2,7 +2,7 @@ section
   .container
     .row
       .col-lg-12.text-center
-        h2.section-heading Try Pixlyz free for 10 Days, and pick a plan later
+        h3.section-heading Try Pixlyz free for 10 Days, and pick a plan later
         h3.section-subheading.text-muted No credit card required. No obligation. No risk.
     - arr = %w{monthly yearly}
     - arr.each do |a|
@@ -10,29 +10,30 @@ section
         = render 'locomotive/packages/free_trial'
         - Locomotive::Package.where(expire_type: a).each do |package|
           .col-sm-3
-            h4
-              = package.name
-            hr
-            h4
-              = package.price
-            hr
-            p.text-muted
+            .package-box
+              h4
+                = package.name
+              hr
+              h4
+                = package.price
+              hr
+              p.text-muted
+                strong
+                  = package.no_of_pages
+                '
+                'No. of Pages
+                br
+                strong
+                  = package.no_of_images
+                '
+                'No. of Images
+                br
               strong
-                = package.no_of_pages
+                = package.site_count
               '
-              'No. of Pages
+              'Site
               br
-              strong
-                = package.no_of_images
-              '
-              'No. of Images
-              br
-            strong
-              = package.site_count
-            '
-            'Site
-            br
-              = link_to "#{package.name}", activate_package_path(package), class: 'btn btn-primary'
+                = link_to "#{package.name}", activate_package_path(package), class: 'btn btn-primary'
     br
     br
     .row
