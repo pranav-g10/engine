@@ -18,15 +18,13 @@ class PayuController < Locomotive::BaseController
       flash[:success] = 'Plan Activated'
       redirect_to locomotive.sites_path
     else
-      flash[:alert] = 'Try Again, Some thing went wrong'
-      redirect_to locomotive.packages_path
+      redirect_to locomotive.packages_path, :flash => { :notice => "Plan activated" }
     end
 
   end
 
   def failure
-    flash[:alert] = 'Try Again, Some thing went wrong'
-    engine.packages_path
+    redirect_to locomotive.packages_path, :flash => { :alert => "Sorry, something went wrong" }
   end
 
   private
