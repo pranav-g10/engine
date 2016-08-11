@@ -63,3 +63,7 @@ input:checked + .slider:before {
   background-color: #ffffff;
   padding: 5%;
 }
+.active_package:disabled, .active_package[disabled]:hover{
+  background-color: #1ec185;
+  border-color: #1ec185;
+}

@@ -49,7 +49,12 @@ section
                 '
                 'Sites
                 br
-                  = button_tag "#{package.name}", class: 'btn btn-primary'
+                  - if current_locomotive_account.account_package.package.name == package.name
+                    -  val = true
+                  - else
+                    - val = false
+                  - css_class = val ? "active_package" : ""
+                  = button_tag "#{package.name}", class: "btn btn-primary #{css_class}", disabled: val, title: val ? 'activated':'', data:  val ? { toggle: 'modal', target: '#myModal' } : ''
                   /= link_to "#{package.name}", activate_package_path(package), class: 'btn btn-primary'
     br
     br

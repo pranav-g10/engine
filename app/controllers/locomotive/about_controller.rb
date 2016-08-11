@@ -8,7 +8,7 @@ module Locomotive
 
     def contact_us
       Locomotive::UserNotifier.send_email(params[:name], params[:email], params[:phone], params[:message]).deliver
-      redirect_to about_page_path
+      render :json => {:success => true}
     end
   end
 end

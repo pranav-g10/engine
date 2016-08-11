@@ -124,7 +124,10 @@ $(document).ready(function(){
                         "phone" : phone,
                         "message" : message},
                 success:function(result){
-
+                    if (result.success == true) {
+                        var url = "/locomotive/page";
+                        $(location).attr('href', url);
+                    }
         }});
     });
 
