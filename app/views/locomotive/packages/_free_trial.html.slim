@@ -1,25 +1,26 @@
 - Locomotive::Package.find_by(name: "Trial") do |package|
   .col-sm-3
-    h4
-      = package.name
-    hr
-    h4
-      = package.price
-    hr
-    p.text-muted
+    .package-box
+      h4
+        = package.name
+      hr
+      h4
+        = package.price
+      hr
+      p.text-muted
+        strong
+          = package.no_of_pages
+        '
+        'No. of Pages
+        br
+        strong
+          = package.no_of_images
+        '
+        'No. of Images
+        br
       strong
-        = package.no_of_pages
+        = package.site_count
       '
-      'No. of Pages
+      'Site
       br
-      strong
-        = package.no_of_images
-      '
-      'No. of Images
-      br
-    strong
-      = package.site_count
-    '
-    'Site
-    br
-      = link_to 'Free Trial', activate_package_path(package), class: 'btn btn-primary'
+        = link_to 'Free Trial', activate_package_path(package), class: 'btn btn-primary'

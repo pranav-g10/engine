@@ -255,5 +255,12 @@ module Locomotive
       "#{Locomotive::VERSION}/site/#{current_site._id}/#{current_site.handle}/sidebar/content_types-#{count}-#{max_updated_at}"
     end
 
+    def plan_expired?
+      if current_locomotive_account.account_package.start_at + current_locomotive_account.account_package.package.expire_after >= Date.today
+        false
+      else
+        true
+      end
+    end
   end
 end

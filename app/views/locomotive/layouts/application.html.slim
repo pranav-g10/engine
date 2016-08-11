@@ -7,8 +7,8 @@ html xmlns='http://www.w3.org/1999/xhtml'
   body class="sidebar-open on-main #{body_class}"
     = render 'locomotive/shared/navigation'
     = render 'locomotive/shared/sidebar'
-
-    .content-main  style=("padding-bottom: 60px;")
+    - if current_locomotive_account.account_package.package.free_trial?
+    .content-main class="#{current_locomotive_account.account_package.package.free_trial? ? 'padding-bottom-60px' : ''}"
       .content-overlay
 
       .drawer
@@ -47,3 +47,4 @@ html xmlns='http://www.w3.org/1999/xhtml'
       = yield :foot
     - if current_locomotive_account.account_package.package.free_trial?
       = render 'locomotive/shared/footer'
+  = render 'locomotive/shared/modal'

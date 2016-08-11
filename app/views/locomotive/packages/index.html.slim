@@ -26,30 +26,31 @@ section
             = hidden_field_tag :udf2, package.id
             = hidden_field_tag :hash, gen_hash(package, txnid)
             .col-sm-3
-              h4
-                = package.name
-              hr
-              h4
-                = package.price
-              hr
-              p.text-muted
+              .package-box
+                h4
+                  = package.name
+                hr
+                h4
+                  = package.price
+                hr
+                p.text-muted
+                  strong
+                    = package.no_of_pages
+                  '
+                  'No. of Pages
+                  br
+                  strong
+                    = package.no_of_images
+                  '
+                  'No. of Images
+                  br
                 strong
-                  = package.no_of_pages
+                  = package.site_count
                 '
-                'No. of Pages
+                'Sites
                 br
-                strong
-                  = package.no_of_images
-                '
-                'No. of Images
-                br
-              strong
-                = package.site_count
-              '
-              'Sites
-              br
-                = button_tag "#{package.name}", class: 'btn btn-primary'
-                /= link_to "#{package.name}", activate_package_path(package), class: 'btn btn-primary'
+                  = button_tag "#{package.name}", class: 'btn btn-primary'
+                  /= link_to "#{package.name}", activate_package_path(package), class: 'btn btn-primary'
     br
     br
     .row

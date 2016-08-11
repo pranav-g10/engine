@@ -17,6 +17,7 @@ gem 'prawn'
 gem 'prawn-table'
 gem 'dotenv-rails'
 
+
 group :test, :development do
   gem 'rspec-rails', '~> 3.2.1' #~> 2.14.2' # In order to have rspec tasks and generators
   gem 'pry'
