@@ -20,7 +20,7 @@ module Locomotive
     field :cardCategory, type: String
     field :productinfo, type: String
 
-    belongs_to :account_package
+    belongs_to :account_package, class_name: 'Locomotive::AccountPackage'
 
     ## validations ##
     validates_uniqueness_of :invoice_no

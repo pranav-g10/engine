@@ -1,11 +1,30 @@
 class InvoicePdf < Prawn::Document
-  def initialize(invoice)
+  def initialize(invoice, user)
     super()
     @invoice = invoice
+    @user = user
+    pre_header
+    move_down 20
+    stroke_horizontal_line(0, bounds.width)
     header
     text_content
+    stroke_horizontal_line(0, bounds.width)
     table_content
-    footer
+    # footer
+
+  end
+
+  def pre_header
+    filename = "#{Rails.root}/app/assets/images/appstreet.jpg"
+    y_position = cursor - 10
+    bounding_box([0, y_position], :width => 10) do
+      image filename
+    end
+    bounding_box([70,y_position], :width => 270) do
+      text "\#Invoice No #{@invoice.invoice_no}"
+      text "Payment Date #{@invoice.addedon.to_date}"
+      text "Today Date #{Date.today}"
+    end
   end
 
   def header
@@ -13,8 +32,8 @@ class InvoicePdf < Prawn::Document
     y_position = cursor - 10
 
     # The bounding_box takes the x and y coordinates for positioning its content and some options to style it
-    bounding_box([0, y_position], :width => 270, :height => 300) do
-      text "App Street Software Pvt. Ltd.", size: 15, style: :bold
+    bounding_box([0, y_position], :width => 270, :height => 100) do
+      text "App Street Software Pvt. Ltd.", size: 12, style: :bold
 
       text "470, Tower B"
       text "Spaze iTech Park"
@@ -23,31 +42,14 @@ class InvoicePdf < Prawn::Document
       text "INDIA"
     end
 
-    bounding_box([300, y_position], :width => 270, :height => 100) do
-      text "INVOICE", size: 15, style: :bold
-        bounding_box([0, 50], :width => 100, :height => 100) do
-
-          text "Invoice no."
-          text "Invoice Date"
-        end
-        bounding_box([70,50], :width => 100, :height => 100) do
-
-          text "#{@invoice.txnid}"
-          text "#{@invoice.addedon}"
-        end
-    end
-    #This inserts an image in the pdf file and sets the size of the image
   end
 
   def text_content
-    bounding_box([0, cursor], :width => 270, :height => 100) do
-      text "Bill to:", size: 12, style: :bold
+    bounding_box([0, cursor], :width => 270, :height => 50) do
+      text "Bill To:", size: 12, style: :bold
 
-      text "name"
-      text "company name"
-      text "street address"
-      text "Phone no."
-      text "INDIA"
+      text "#{@user.name.titleize}"
+      text "#{@user.email}"
     end
   end
 
@@ -55,55 +57,58 @@ class InvoicePdf < Prawn::Document
     # This makes a call to product_rows and gets back an array of data that will populate the columns and rows of a table
     # I then included some styling to include a header and make its text bold. I made the row background colors alternate between grey and white
     # Then I set the table column widths
-    table product_rows do
-      row(0).font_style = :bold
-      self.header = true
-      self.row_colors = ['DDDDDD', 'FFFFFF']
-      self.column_widths = [300, 120, 120]
+    move_down 20
+    text "Payment Detail:", size: 12, style: :bold
+    y_position = cursor - 10
+    bounding_box([0, y_position], :width => 300, :height => 500) do
+      table product_rows do
+        # row(0).font_style = :bold
+        # self.header = true
+        self.row_colors = ['DDDDDD', 'FFFFFF']
+        # self.column_widths = [120, 120]
+      end
     end
 
-    table total_rows do
-      row(0).font_style = :bold
-      self.header = true
-      self.row_colors = ['DDDDDD', 'FFFFFF']
-      self.column_widths = [150]
-      self.position = :right
+    bounding_box([300, y_position], :width => 200, :height => 500) do
+      table total_rows do
+        # row(0).font_style = :bold
+        self.header = true
+        self.row_colors = ['DDDDDD', 'FFFFFF']
+        # self.column_widths = [120]
+        self.position = :right
+      end
     end
   end
 
   def product_rows
-    [['Description', 'status', 'Amount']] +
-          [[@invoice.productinfo, @invoice.status, @invoice.account_package.package.price]]
+    columns = ["mode", "status", "unmappedstatus", "cardCategory", "addedon",
+               "productinfo", "bank_ref_num", "name_on_card", "cardnum", "issuing_bank",
+               "card_type", "controller"]
+    columns.map do |c|
+      [c, "#{@invoice.send(c)}"]
+    end
   end
 
   def total_rows
-    [['Subtotal   345']] +
-        [['Tax    34']]+
-      [['Total Due'   '379']]
+    [['Price', "#{@invoice.amount}"]] +
+    [['Tax', "#{ENV['TAX']}%"]] +
+    [['Total Payment', "#{@invoice.amount}"]]
   end
 
   def footer
-    bounding_box([0, 100], :width => 270, :height => 50) do
-      stroke_horizontal_line(0, bounds.width)
-      text "signature", align: :center
-      # formatted_text_box([{ :text => "ffh",
-      #                       :size => 12,
-      #                       :styles => [:underline] }])
-      # formatted_text_box([{ :text => "ffvfvfvfh",
-      #                       :size => 12
-      #                       }])
-    end
 
-    bounding_box([300, 100], :width => 270, :height => 50) do
-      # formatted_text_box([{ :text => "shubham",
-      #                       :size => 12,
-      #                       :styles => [:underline] }])
-      # formatted_text_box([{ :text => "ffbbbbbbh",
-      #                       :size => 12}])
-      stroke_horizontal_line(0, bounds.width)
-      text "Date", align: :center
-    end
+    # bounding_box([0, 100], :width => 270, :height => 50) do
+    #   stroke_horizontal_line(0, bounds.width)
+    #   text "signature", align: :center
+    # end
+    #
+    # bounding_box([300, 100], :width => 270, :height => 50) do
+    #   text "#{Date.today}", align: :center
+    #   stroke_horizontal_line(0, bounds.width)
+    #   text "Date", align: :center
+    # end
+    # text "Thank You for Your Business", align: :center
+    # text "#{Date.today}", align: :center
 
-    text "Thank You for Your Business", align: :center
   end
 end
