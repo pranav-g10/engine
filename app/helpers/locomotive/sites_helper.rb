@@ -32,6 +32,7 @@ module Locomotive
 
     # custom method for checking site limit crossed or not
     def sites_limit_crossed?
+      return false if current_locomotive_account.account_package.nil?
       if current_locomotive_account.sites.count < current_locomotive_account.account_package.package.site_count
         false
       else

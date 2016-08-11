@@ -2,8 +2,8 @@ section
   .container
     .row
       .col-lg-12.text-center
-        h2.section-heading Try Pixlyz free for 10 Days, and pick a plan later
-        h3.section-subheading.text-muted No credit card required. No obligation. No risk.
+        h3.color_white Upgrade Now
+        br
     - arr = %w{monthly yearly}
     - arr.each do |a|
       .row class="#{a}-price"
@@ -25,7 +25,7 @@ section
             = hidden_field_tag :udf1, current_locomotive_account.id
             = hidden_field_tag :udf2, package.id
             = hidden_field_tag :hash, gen_hash(package, txnid)
-            .col-sm-3
+            .width-24.well.mrgn_rgt_3
               .package-box
                 h4
                   = package.name
@@ -43,11 +43,11 @@ section
                     = package.no_of_images
                   '
                   'No. of Images
-                  br
                 strong
                   = package.site_count
                 '
                 'Sites
+                br
                 br
                   = button_tag "#{package.name}", class: 'btn btn-primary'
                   /= link_to "#{package.name}", activate_package_path(package), class: 'btn btn-primary'
@@ -55,8 +55,8 @@ section
     br
     .row
       .col-lg-12.text-center
-        span monthly billing
+        span.color_white monthly billing
         label.switch
           input type="checkbox" /
           .slider.round
-        span yearly billing
+        span.color_white yearly billing
