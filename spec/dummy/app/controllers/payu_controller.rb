@@ -13,7 +13,7 @@ class PayuController < Locomotive::BaseController
     if @account_pack.save
       invoice = @account_pack.invoices.new(invoice_params)
       invoice.save!
-      pdf = InvoicePdf.new(invoice)
+      pdf = InvoicePdf.new(invoice, current_locomotive_account)
       Locomotive::UserNotifier.send_invoice(@account_pack.actor.email, pdf.render, "invoice.pdf").deliver
       flash[:success] = 'Plan Activated'
       redirect_to locomotive.sites_path
