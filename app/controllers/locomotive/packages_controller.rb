@@ -21,7 +21,7 @@ module Locomotive
         flash[:notice] = "Plan Activated"
         redirect_to sites_path
       else
-        flash[:alert] = "Try Again"
+        flash[:alert] = "Try Again, Some thing went wrong"
         render :index
       end
     end
@@ -30,6 +30,8 @@ module Locomotive
       @account_package = current_locomotive_account.account_package
       @package = current_locomotive_account.account_package.package
     end
+
+    
     private
 
     def load_package

@@ -1,7 +1,7 @@
 module Locomotive
     class UserNotifier < ActionMailer::Base
 
-      default :from => 'shubhamjain.2303@gmail.com'
+      default :from => 'pixlyz.com'
 
       def send_email(name, email, phone, message)
         @name = name

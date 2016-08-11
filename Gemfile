@@ -15,7 +15,7 @@ gem 'railroady'
 gem "sidekiq-cron", "~> 0.4.0"
 gem 'prawn'
 gem 'prawn-table'
-# gem 'active_merchant_payu_in'
+gem 'dotenv-rails'
 
 
 group :test, :development do
