@@ -1,0 +1,50 @@
+.wrap {
+  margin-left: 9em;
+  margin-right: 9em; }
+
+.title {
+  color: #222222;
+  font-size: 20px;
+  font-weight: normal;
+  margin-bottom: 16px; }
+
+.grid article {
+  float: left;
+  margin: 3.4375em 1.25em 0;
+  width: 18.125em; }
+
+.border {
+  border-top: 1px solid #E3E3E3;
+  margin: 63px auto 20px;
+  width: 290px; }
+
+article {
+  margin: 0 auto;
+  max-width: 950px; }
+
+.project-description {
+  margin: 0 auto 8px;
+  max-width: 620px;
+  width: 65.2631%; }
+
+.site-title {
+  font-size: 1.5em;
+  margin-bottom: 1.25em; }
+
+.meta-data h4 {
+  color: #696969;
+  font-size: 16px;
+  font-weight: normal; }
+
+.meta-data span, .meta-data a {
+  color: #B2B2B2;
+  font-size: 13px; }
+
+.meta-data span + h4 {
+  margin-left: 7px; }
+
+.meta-data {
+  padding-top: 2em; }
+
+a.text_deco_none {
+  text-decoration: none !important; }
