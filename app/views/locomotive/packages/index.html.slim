@@ -25,7 +25,7 @@ section
             = hidden_field_tag :udf1, current_locomotive_account.id
             = hidden_field_tag :udf2, package.id
             = hidden_field_tag :hash, gen_hash(package, txnid)
-            .width-24.well.mrgn_rgt_3
+            .col-md-3.col-xs-6.well.border
               .package-box
                 h4
                   = package.name
