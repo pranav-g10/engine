@@ -3,6 +3,8 @@
 Locomotive::Engine.routes.draw do
 
   get 'page' => 'about#page', as: :about_page
+  post 'contact_us' => 'about#contact_us'
+
 
   # Authentication
   devise_for :locomotive_account,
@@ -23,6 +25,10 @@ Locomotive::Engine.routes.draw do
   root to: 'sites#index'
 
   resources :sites
+  resources :packages, only: :index do
+    get :activate, on: :member
+    get :package_detail, on: :collection
+  end
 
   resource :my_account, controller: 'my_account' do
     put :regenerate_api_key, on: :member

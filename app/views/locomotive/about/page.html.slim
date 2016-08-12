@@ -59,6 +59,8 @@ html xmlns='http://www.w3.org/1999/xhtml' lang=I18n.locale
             li
               a.page-scroll href="#team"  Team
             li
+              a.page-scroll href="#pricing"  Pricing
+            li
               = link_to 'Sign In', sign_in_path, class: "page-scroll", target: :blank
             li
               = link_to 'Sign Up', sign_up_path, class: "page-scroll", target: :blank
@@ -207,8 +209,11 @@ html xmlns='http://www.w3.org/1999/xhtml' lang=I18n.locale
         .row
           .col-lg-8.col-lg-offset-2.text-center
             p.large.text-muted Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut eaque, laboriosam veritatis, quos non quis ad perspiciatis, totam corporis ea, alias ut unde.
+
+    / Pricing Section
+    = render 'locomotive/shared/plan'
     /! Clients Aside
-    aside.clients.bg-light-gray
+    aside.clients
       .container
         .row
           .col-md-3.col-sm-6
@@ -251,12 +256,12 @@ html xmlns='http://www.w3.org/1999/xhtml' lang=I18n.locale
                 .clearfix
                 .col-lg-12.text-center
                   #success
-                  button.btn.btn-xl type="submit"  Send Message
+                  button.btn.btn-xl#submit-contact type="submit"  Send Message
     footer
       .container
         .row
           .col-md-4
-            span.copyright Copyright &copy; Your Website 2016
+            span.copyright Copyright &copy; Pixylz.com 2016
           .col-md-4
             ul.list-inline.social-buttons
               li

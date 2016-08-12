@@ -1,0 +1,115 @@
+section#pricing.bg-light-gray
+  .container
+    .row
+      .col-lg-12.text-center
+        h3.section-heading Try Pixylz free for 10 Days, and pick a plan later
+        br
+        h4.section-subheading.text-muted No credit card required. No obligation. No risk.
+        br
+
+    .row.monthly-price
+      - Locomotive::Package.find_by(name: "Trial") do |package|
+        .col-sm-3 style="background-color: white;"
+          .team-member
+            h4
+              = package.name
+            hr
+            h4
+              = package.price
+            hr
+            p.text-muted
+              strong
+                = package.no_of_pages
+              '
+              'Pages
+              br
+              strong
+                = package.no_of_images
+              '
+              'Images
+              br
+            strong
+              = package.site_count
+            '
+            'Site
+      - Locomotive::Package.where(expire_type: "monthly").each do |package|
+        .col-sm-3 style="background-color: white;"
+          .team-member
+            h4
+              = package.name
+            hr
+            h4
+              = package.price
+            hr
+            p.text-muted
+              strong
+                = package.no_of_pages
+              '
+              'Pages
+              br
+              strong
+                = package.no_of_images
+              '
+              'Images
+              br
+            strong
+              = package.site_count
+            '
+            'Sites
+
+    .row.yearly-price
+      - Locomotive::Package.find_by(name: "Trial") do |package|
+        .col-sm-3 style="background-color: white;"
+          .team-member
+            h4
+              = package.name
+            hr
+            h4
+              = package.price
+            hr
+            p.text-muted
+              strong
+                = package.no_of_pages
+              '
+              'Pages
+              br
+              strong
+                = package.no_of_images
+              '
+              'Images
+              br
+            strong
+              = package.site_count
+            '
+            'Site
+      - Locomotive::Package.where(expire_type: "yearly").each do |package|
+        .col-sm-3 style=" background-color: white;"
+          .team-member
+            h4
+              = package.name
+            hr
+            h4
+              = package.price
+            hr
+            p.text-muted
+              strong
+                = package.no_of_pages
+              '
+              'No. of Pages
+              br
+              strong
+                = package.no_of_images
+              '
+              'No. of Images
+              br
+            strong
+              = package.site_count
+            '
+            'Sites
+    .row
+      .col-lg-12.text-center
+        span monthly billing
+        label.switch
+          input type="checkbox" /
+          .slider.round
+        span yearly billing

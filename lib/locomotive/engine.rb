@@ -1,5 +1,6 @@
 require 'locomotive/dependencies'
 require 'locomotive'
+require 'dotenv'
 
 $:.unshift File.dirname(__FILE__) # TODO: not sure about that, looks pretty useless
 
@@ -9,6 +10,8 @@ module Locomotive
     isolate_namespace Locomotive
 
     paths['mongodb/migrate'] = 'mongodb/migrate'
+
+    Dotenv.load
 
     config.to_prepare do
       Dir.glob(Rails.root + 'app/decorators/**/*_decorator*.rb').each do |c|
@@ -50,6 +53,7 @@ module Locomotive
         locomotive.css
         locomotive/account.js
         locomotive/account.css
+        locomotive/pricing.css
         locomotive/live_editing_iframe.css
         locomotive/live_editing_error.css
         locomotive/error.css)

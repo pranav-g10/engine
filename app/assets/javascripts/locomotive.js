@@ -97,6 +97,42 @@ $(document).ready(function(){
         $(".sidebar, .navigation").css("z-index", "100");
     });
 
+
+    $("input:checkbox").on("change", function(){
+        if($('input:checkbox').is(':checked')){
+            $('.yearly-price').show();
+            $('.monthly-price').hide();
+        }
+        else{
+            $('.monthly-price').show();
+            $('.yearly-price').hide();
+        }
+
+    });
+
+    $("#submit-contact ").on("click",function(e) {
+        e.preventDefault();
+        var name = $('#name').val();
+        var email = $('#email').val();
+        var phone = $('#phone').val();
+        var message = $('#message').val();
+        $.ajax({url:"contact_us",
+                method: "POST",
+                dataType: "json",
+                data: {"name" : name,
+                        "email" : email,
+                        "phone" : phone,
+                        "message" : message},
+                success:function(result){
+                    if (result.success == true) {
+                        var url = "/locomotive/page";
+                        $(location).attr('href', url);
+                    }
+        }});
+    });
+
+
+
 });
 
 

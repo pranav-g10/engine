@@ -10,7 +10,12 @@
 
   .public-entries
     = render @sites
+    - if !sites_limit_crossed?
+      = link_to new_site_url, class: 'public-entry is-add' do
+        i.fa.fa-plus
+        = t('.new')
+    - else
+      .public-entry
+        span Sites limit has been reached. Please upgrade your plan
+        = link_to 'Upgrade Now', packages_path, class: "btn btn-primary btn-sm"
 
-  = link_to new_site_url, class: 'public-entry is-add' do
-    i.fa.fa-plus
-    = t('.new')

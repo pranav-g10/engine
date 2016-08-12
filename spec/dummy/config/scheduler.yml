@@ -1,0 +1,7 @@
+free_trial_usage_alert:
+  cron: "0 0 * * *"
+  class: "TrialPackage"
+
+monthly_invoice:
+  cron: "0 0 1 * *"
+  class: "Invoice"

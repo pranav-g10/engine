@@ -61,5 +61,21 @@ module Locomotive
       policy(content_type).update? && content_type.public_submission_enabled?
     end
 
+    def projects_limit_crossed?
+      if current_site.content_types.by_id_or_slug("projects").first.number_of_entries < current_locomotive_account.account_package.package.no_of_projects
+        false
+      else
+        true
+      end
+    end
+
+    def photos_limit_crossed?
+      if current_site.content_types.by_id_or_slug("photos").first.number_of_entries < current_locomotive_account.account_package.package.no_of_images
+        false
+      else
+        true
+      end
+    end
+
   end
 end

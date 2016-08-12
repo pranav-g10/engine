@@ -22,7 +22,6 @@ module Locomotive
             generate_models(from_site)
             maintain_assoc
             generate_helpers(from_site)
-
             # copying assets
             FileUtils::mkdir_p  "#{Rails.root}/public/sites/#{self.id.to_s}/theme/"
             FileUtils.cp_r "#{Rails.root}/public/sites/#{from_site.id.to_s}/theme/.", "#{Rails.root}/public/sites/#{self.id.to_s}/theme/."
