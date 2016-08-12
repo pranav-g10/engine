@@ -48,7 +48,7 @@ section
                 '
                 'Sites
                 br
-                  - if current_locomotive_account.account_package.package.name == package.name
+                  - if current_locomotive_account.account_package && (current_locomotive_account.account_package.package.name == package.name)
                     -  val = true
                   - else
                     - val = false
