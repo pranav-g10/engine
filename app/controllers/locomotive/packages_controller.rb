@@ -28,6 +28,10 @@ module Locomotive
 
     def package_detail
       @account_package = current_locomotive_account.account_package
+      if @account_package.nil?
+        flash[:alert] = 'No Package Selected'
+        redirect_to packages_path and return
+      end
       @package = current_locomotive_account.account_package.package
     end
 

@@ -11,8 +11,8 @@ div class="mrgn_lft_2_pt padding_lft_10_pt padding_rgt_10_pt"
             div class="col-lg-6 col-md-6 col-sm-6 col-xs-6"
               = link_to 'Live Demo' , preview_path(site), class: 'mrgn_lft_15'
             div class="col-lg-6 col-md-6 col-sm-6 col-xs-6"
-              = link_to 'Activate',"#change-template-modal", class: 'btn btn-info fancybox'
-            #change-template-modal.modal_template data-id="apex" style=("display: none;") 
+              = link_to 'Activate',"#change-template-modal-#{site.name}", class: 'btn btn-info fancybox'
+            .modal_template data-id="apex" style=("display: none;") id="change-template-modal-#{site.name}"
               h2 Activate Template
               p Feel free to try out different templates. We'll preserve your past settings for each template.
               = link_to 'Activate Template',activate_path(site_id: site.id), class: 'btn btn-info'
