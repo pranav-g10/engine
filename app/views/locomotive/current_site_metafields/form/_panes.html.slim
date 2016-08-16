@@ -17,5 +17,5 @@
     = f.action
   br
   = form_tab_pane "restore" do
-    = link_to 'restore default', {controller: "current_site_metafields", action: "restore_default"}, :class => "btn btn-primary"
+    = link_to 'restore default', "", :class => "btn btn-primary restore-btn", title: '', data: { toggle: 'modal', target: '#myModal' }
 

@@ -1,6 +1,5 @@
-doctype XML
 doctype html
-html xmlns='http://www.w3.org/1999/xhtml'
+html xmlns='http://www.w3.org/1999/xhtml' lang=I18n.locale
   head
     meta charset="utf-8" /
     meta content="IE=edge" http-equiv="X-UA-Compatible" /
@@ -8,23 +7,36 @@ html xmlns='http://www.w3.org/1999/xhtml'
     meta content="" name="description" /
     meta content="" name="author" /
     title Agency - Start Bootstrap Theme
-    /! Bootstrap Core CSS
-    link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" /
-    /! Custom Fonts
-    /link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" /
     link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" /
     link href="https://fonts.googleapis.com/css?family=Kaushan+Script" rel="stylesheet" type="text/css" /
     link href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic" rel="stylesheet" type="text/css" /
     link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css" /
-    = stylesheet_link_tag 'locomotive/application', media: 'screen'
-  /! HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries
-  /! WARNING: Respond.js doesn't work if you view the page via file://
-  /![if lt IE 9]
-       | <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script
-       | <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script
+    link href="locomotive/agency.scss" /
 
-  body
-    nav#mainNav.navbar.navbar-default.navbar-custom.navbar-fixed-top
+    javascript:
+      window.Locomotive = {mounted_on: '#{Locomotive.mounted_on}'}
+
+    = javascript_include_tag 'locomotive'
+    = stylesheet_link_tag 'locomotive/application', media: 'screen'
+
+    javascript:
+      window.locale = '#{I18n.locale}';
+      window.content_locale = '#{::Mongoid::Fields::I18n.locale}';
+      $(document).ready(function () {
+        window.application_view = new Locomotive.Views.SimpleView({
+          flash:      #{{flash_messages_to_json}},
+          view:       #{backbone_view_class_name}
+        });
+        window.application_view.render();
+
+      });
+
+    /= csrf_meta_tag
+
+    /= yield :head
+
+  body class=[controller.controller_name, controller.action_name, flash.empty? ? '' : 'with-flash'].join(' ')
+    nav#mainNav.navbar.navbar-default.navbar-custom.navbar-fixed-top.padding_6px style="background-color: #292828;"
       .container
         /! Brand and toggle get grouped for better mobile display
         .navbar-header.page-scroll
@@ -32,7 +44,7 @@ html xmlns='http://www.w3.org/1999/xhtml'
             span.sr-only Toggle navigation
             | Menu
             i.fa.fa-bars
-          a.navbar-brand.page-scroll href="#page-top"  Start Bootstrap
+          a.navbar-brand.page-scroll href="#page-top"  App Street
         /! Collect the nav links, forms, and other content for toggling
         #bs-example-navbar-collapse-1.collapse.navbar-collapse
           ul.nav.navbar-nav.navbar-right
@@ -40,14 +52,18 @@ html xmlns='http://www.w3.org/1999/xhtml'
               a href="#page-top"
             li
               a.page-scroll href="#services"  Services
-            li
-              a.page-scroll href="#portfolio"  Portfolio
+            /li
+            /  a.page-scroll href="#portfolio"  Portfolio
             li
               a.page-scroll href="#about"  About
             li
               a.page-scroll href="#team"  Team
             li
+              a.page-scroll href="#pricing"  Pricing
+            li
               = link_to 'Sign In', sign_in_path, class: "page-scroll", target: :blank
+            li
+              = link_to 'Sign Up', sign_up_path, class: "page-scroll", target: :blank
             li
               a.page-scroll href="#contact"  Contact
 
@@ -86,70 +102,8 @@ html xmlns='http://www.w3.org/1999/xhtml'
             h4.service-heading Web Security
             p.text-muted Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.
 
-    /! Portfo lio Grid Section
-    section#portfolio.bg-light-gray
-      .container
-        .row
-          .col-lg-12.text-center
-            h2.section-heading Portfolio
-            h3.section-subheading.text-muted Lorem ipsum dolor sit amet consectetur.
-        .row
-          .col-md-4.col-sm-6.portfolio-item
-            a.portfolio-link data-toggle="modal" href="#portfolioModal1"
-            .portfolio-hover
-              .portfolio-hover-content
-                i.fa.fa-plus.fa-3x
-            = image_tag "landing_page/portfolio/roundicons.png", class: 'img img-responsive'
-            .portfolio-caption
-              h4 Round Icons
-              p.text-muted Graphic Design
-          .col-md-4.col-sm-6.portfolio-item
-            a.portfolio-link data-toggle="modal" href="#portfolioModal2"
-            .portfolio-hover
-              .portfolio-hover-content
-                i.fa.fa-plus.fa-3x
-            = image_tag "landing_page/portfolio/startup-framework.png", class: 'img img-responsive'
-            .portfolio-caption
-              h4 Startup Framework
-              p.text-muted Website Design
-          .col-md-4.col-sm-6.portfolio-item
-            a.portfolio-link data-toggle="modal" href="#portfolioModal3"
-            .portfolio-hover
-              .portfolio-hover-content
-                i.fa.fa-plus.fa-3x
-            = image_tag "landing_page/portfolio/treehouse.png", class: 'img img-responsive'
-            .portfolio-caption
-              h4 Treehouse
-              p.text-muted Website Design
-          .col-md-4.col-sm-6.portfolio-item
-            a.portfolio-link data-toggle="modal" href="#portfolioModal4"
-            .portfolio-hover
-              .portfolio-hover-content
-                i.fa.fa-plus.fa-3x
-            = image_tag "landing_page/portfolio/golden.png", class: 'img img-responsive'
-            .portfolio-caption
-              h4 Golden
-              p.text-muted Website Design
-          .col-md-4.col-sm-6.portfolio-item
-            a.portfolio-link data-toggle="modal" href="#portfolioModal5"
-            .portfolio-hover
-              .portfolio-hover-content
-                i.fa.fa-plus.fa-3x
-            = image_tag "landing_page/portfolio/escape.png", class: 'img img-responsive'
-            .portfolio-caption
-              h4 Escape
-              p.text-muted Website Design
-          .col-md-4.col-sm-6.portfolio-item
-            a.portfolio-link data-toggle="modal" href="#portfolioModal6"
-            .portfolio-hover
-              .portfolio-hover-content
-                i.fa.fa-plus.fa-3x
-            = image_tag "landing_page/portfolio/dreams.png", class: 'img img-responsive'
-            .portfolio-caption
-              h4 Dreams
-              p.text-muted Website Design
     /! About Section
-    section#about
+    section#about.bg-light-gray
       .container
         .row
           .col-lg-12.text-center
@@ -198,11 +152,9 @@ html xmlns='http://www.w3.org/1999/xhtml'
                 .timeline-image
                   h4
                     | Be Part
-                      br/
-                    | Our
-                      br/
+
     /! Team Section
-    section#team.bg-light-gray
+    section#team
       .container
         .row
           .col-lg-12.text-center
@@ -257,22 +209,25 @@ html xmlns='http://www.w3.org/1999/xhtml'
         .row
           .col-lg-8.col-lg-offset-2.text-center
             p.large.text-muted Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut eaque, laboriosam veritatis, quos non quis ad perspiciatis, totam corporis ea, alias ut unde.
+
+    / Pricing Section
+    = render 'locomotive/shared/plan'
     /! Clients Aside
     aside.clients
       .container
         .row
           .col-md-3.col-sm-6
             a href="#"
-              img.img-responsive.img-centered alt="" src="landing_page/logos/envato.jpg" /
+              = image_tag "landing_page/logos/envato.jpg", class: 'img img-responsive img-centered'
           .col-md-3.col-sm-6
             a href="#"
-              img.img-responsive.img-centered alt="" src="landing_page/logos/designmodo.jpg" /
+              = image_tag "landing_page/logos/designmodo.jpg", class: 'img img-responsive img-centered'
           .col-md-3.col-sm-6
             a href="#"
-              img.img-responsive.img-centered alt="" src="landing_page/logos/themeforest.jpg" /
+              = image_tag "landing_page/logos/designmodo.jpg", class: 'img img-responsive img-centered'
           .col-md-3.col-sm-6
             a href="#"
-              img.img-responsive.img-centered alt="" src="landing_page/logos/creative-market.jpg" /
+              = image_tag "landing_page/logos/creative-market.jpg", class: 'img img-responsive img-centered'
     /! Contact Section
     section#contact
       .container
@@ -301,12 +256,12 @@ html xmlns='http://www.w3.org/1999/xhtml'
                 .clearfix
                 .col-lg-12.text-center
                   #success
-                  button.btn.btn-xl type="submit"  Send Message
+                  button.btn.btn-xl#submit-contact type="submit"  Send Message
     footer
       .container
         .row
           .col-md-4
-            span.copyright Copyright &copy; Your Website 2016
+            span.copyright Copyright &copy; Pixylz.com 2016
           .col-md-4
             ul.list-inline.social-buttons
               li
@@ -325,5 +280,3 @@ html xmlns='http://www.w3.org/1999/xhtml'
               li
                 a href="#"  Terms of Use
 
-
-  script src="../landing_page/agency.js"

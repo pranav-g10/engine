@@ -12,6 +12,12 @@ gem 'uglifier',     '>= 2.5.3'
 gem 'coveralls',    '~> 0.7.2', require: false
 gem 'mongoid'
 gem 'railroady'
+gem "sidekiq-cron", "~> 0.4.0"
+gem 'prawn'
+gem 'prawn-table'
+gem 'dotenv-rails'
+
+
 group :test, :development do
   gem 'rspec-rails', '~> 3.2.1' #~> 2.14.2' # In order to have rspec tasks and generators
   gem 'pry'

@@ -21,7 +21,17 @@ module Locomotive
     end
 
     def restore
-      site.metafields["color"]['body_text'] = "#000000"
+      property_type = Locomotive::ContentType.by_id_or_slug('properties').first
+      default_fields = property_type.entries.map(&:title)
+      property_entries = property_type.entries
+      default_fields.each do |field|
+        type = property_entries.find_by(title: field)
+        values = type.values
+        keys = site.metafields[field].keys
+        keys.each do |key1|
+          site.metafields[field][key1]  = values.find_by(name: key1).value
+        end
+      end
       site.save
     end
 

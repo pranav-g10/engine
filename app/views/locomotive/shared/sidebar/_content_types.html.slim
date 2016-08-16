@@ -8,9 +8,10 @@
 
   ul.sidebar-list.collapse#collapseContentTypes
     - list.each do |content_type|
-      - if policy(content_type).show?
-        li
-          = link_to content_entries_path(current_site, content_type.slug) do
-            = content_type.name
+      - if !content_type_hide(content_type)
+        - if policy(content_type).show?
+          li
+            = link_to content_entries_path(current_site, content_type.slug) do
+              = content_type.name
 
-          span.badge= content_type.number_of_entries || '?'
+            span.badge= content_type.number_of_entries || '?'

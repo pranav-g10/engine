@@ -27,12 +27,17 @@ module Locomotive
     field :name
     field :locale,  default: Locomotive.config.default_locale.to_s or 'en'
     field :super_admin, type: Boolean, default: false
+    field :trial_in_use, type: Boolean, default: false
+    field :mihpayid, type: String
+    field :cardToken, type: String
+    field :payment_source, type: String
 
     ## validations ##
     validates_presence_of :name
 
     ## associations ##
     has_many :created_sites, class_name: 'Locomotive::Site', validate: false, autosave: false
+    has_one :account_package, class_name: 'Locomotive::AccountPackage'
 
     ## callbacks ##
     before_destroy :remove_memberships!
@@ -92,6 +97,16 @@ module Locomotive
           membership.destroy
         end
       end
+    end
+
+    def self.activate
+      activate_account = []
+      Locomotive::AccountPackage.all.each do |ap|
+        if ap.is_active?
+          activate_account << ap
+        end
+      end
+      activate_account
     end
 
   end

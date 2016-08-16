@@ -23,7 +23,34 @@
 //= require ./locomotive/application
 //= require ./locomotive/fancybox
 
-$(document).ready(function() {
+$(document).ready(function(){
+    // Landing Page Scroll
+    $('a.page-scroll').bind('click', function(event) {
+        var $anchor = $(this);
+        $('html, body').stop().animate({
+            scrollTop: ($($anchor.attr('href')).offset().top - 50)
+        }, 1250, 'easeInOutExpo');
+        event.preventDefault();
+    });
+
+    // Highlight the top nav as scrolling occurs
+    $('body').scrollspy({
+        target: '.navbar-fixed-top',
+        offset: 51
+    });
+
+    // Closes the Responsive Menu on Menu Item Click
+    $('.navbar-collapse ul li a:not(.dropdown-toggle)').click(function() {
+        $('.navbar-toggle:visible').click();
+    });
+
+    // Offset for Main Navigation
+    $('#mainNav').affix({
+        offset: {
+            top: 100
+        }
+    })
+
   $.datepicker.setDefaults($.datepicker.regional[window.locale]);
 
     $('ul li').on("click",function(e)
@@ -36,19 +63,77 @@ $(document).ready(function() {
       }
     
     });
-    
+    $('.dropdown').on("click",function(e)
+    {
+        if ($('.nav-tabs li.active').text() == 'Restore') {
+            $('.text-right').hide();
+        }
+
+    });
+
+
     $(".fancybox").fancybox({
-  helpers : { 
-   overlay: {
-    opacity: 0.8,
-    onComplete: function() {
-      $("#fancybox-wrap").css({'top':'20px', 'bottom':'auto'});
-   },  // or the opacity you want 
-    css: {'background': 'rgba(255, 255, 255, 0.972549)'},
-// or your preferred hex color value
-   } // overlay 
-  } // helpers
-});
+      helpers : {
+       overlay: {
+        opacity: 0.8,
+        onComplete: function() {
+          $("#fancybox-wrap").css({'top':'20px', 'bottom':'auto'});
+       },  // or the opacity you want
+        css: {'background': 'rgba(255, 255, 255, 0.972549)'},
+    // or your preferred hex color value
+       } // overlay
+      } // helpers
+    });
+
+
+
+
+    $('.restore-btn').on("click",function(e) {
+        $(".sidebar, .navigation").css("z-index", "-1");
+    });
+
+
+    $(".restore-modal").on("hidden.bs.modal", function () {
+        $(".sidebar, .navigation").css("z-index", "100");
+    });
+
+
+    $("input:checkbox").on("change", function(){
+        if($('input:checkbox').is(':checked')){
+            $('.yearly-price').show();
+            $('.monthly-price').hide();
+        }
+        else{
+            $('.monthly-price').show();
+            $('.yearly-price').hide();
+        }
+
+    });
+
+    $("#submit-contact ").on("click",function(e) {
+        e.preventDefault();
+        var name = $('#name').val();
+        var email = $('#email').val();
+        var phone = $('#phone').val();
+        var message = $('#message').val();
+        $.ajax({url:"contact_us",
+                method: "POST",
+                dataType: "json",
+                data: {"name" : name,
+                        "email" : email,
+                        "phone" : phone,
+                        "message" : message},
+                success:function(result){
+                    if (result.success == true) {
+                        var url = "/locomotive/page";
+                        $(location).attr('href', url);
+                    }
+        }});
+    });
+
+
 
 });
+
+
 
