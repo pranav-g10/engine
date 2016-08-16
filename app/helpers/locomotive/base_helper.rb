@@ -256,7 +256,9 @@ module Locomotive
     end
 
     def plan_expired?
-      if !current_locomotive_account.account_package || (current_locomotive_account.account_package.start_at + current_locomotive_account.account_package.package.expire_after >= Date.today)
+      if current_locomotive_account.account_package &&
+        ((current_locomotive_account.account_package.start_at + current_locomotive_account.account_package.package.expire_after >= Date.today) &&
+          (current_locomotive_account.account_package.days_left > 0))
         false
       else
         true
