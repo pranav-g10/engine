@@ -9,7 +9,7 @@ class PayuController < Locomotive::BaseController
     current_locomotive_account.update!(mihpayid: params[:mihpayid], cardToken: params[:cardToken],
                                        payment_source: params[:payment_source])
 
-    @account_pack.assign_attributes(package: @package)
+    @account_pack.assign_attributes(package: @package, days_left: @package.expire_after)
     if @account_pack.save
       invoice = @account_pack.invoices.new(invoice_params)
       invoice.save!
