@@ -22,6 +22,8 @@
 //= require locomotive/vendor
 //= require ./locomotive/application
 //= require ./locomotive/fancybox
+//= require locomotive/parallax
+
 
 $(document).ready(function(){
     // Landing Page Scroll
@@ -130,6 +132,9 @@ $(document).ready(function(){
                     }
         }});
     });
+
+    $('.parallax-window').parallax({imageSrc: '/assets/landing_page/header-bg.jpg'});
+
 
 
 
