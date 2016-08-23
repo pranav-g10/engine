@@ -22,7 +22,6 @@
 //= require locomotive/vendor
 //= require ./locomotive/application
 //= require ./locomotive/fancybox
-//= require locomotive/parallax
 
 
 $(document).ready(function(){
@@ -112,29 +111,51 @@ $(document).ready(function(){
 
     });
 
-    $("#submit-contact ").on("click",function(e) {
-        e.preventDefault();
-        var name = $('#name').val();
-        var email = $('#email').val();
-        var phone = $('#phone').val();
-        var message = $('#message').val();
-        $.ajax({url:"contact_us",
-                method: "POST",
-                dataType: "json",
-                data: {"name" : name,
+    //home page contact form validation and submission
+    $(function () {
+        $('#contactForm').validate({
+            // Specify validation rules
+            rules: {
+                name: "required",
+                phone: "required",
+                email: {
+                    required: true,
+                    email: true
+                }
+            },
+            // Specify validation error messages
+            messages: {
+                name: "Please enter your name",
+                phone: "Please enter your phone",
+                email: "Please enter a valid email address"
+            },
+            errorClass: "my-error-class",
+            submitHandler: function (form) {
+                //form.submit();
+                var name = $('#name').val();
+                var email = $('#email').val();
+                var phone = $('#phone').val();
+                var message = $('#message').val();
+                $.ajax({url:"contact_us",
+                    method: "POST",
+                    dataType: "json",
+                    data: {"name" : name,
                         "email" : email,
                         "phone" : phone,
                         "message" : message},
-                success:function(result){
-                    if (result.success == true) {
-                        var url = "/locomotive/page";
-                        $(location).attr('href', url);
-                    }
-        }});
+                    success:function(result){
+                        if (result.success == true) {
+                            var url = "/locomotive/page";
+                            $(location).attr('href', url);
+                        }
+                    }});
+            }
+        });
     });
 
     $('.parallax-window-header').parallax({imageSrc: '/assets/landing_page/header-bg.jpg'});
     $('.parallax-window-contact').parallax({imageSrc: '/assets/landing_page/dotted-world-map-vector-1.png'});
+    $('.parallax-window-plan').parallax();
 
 });
 

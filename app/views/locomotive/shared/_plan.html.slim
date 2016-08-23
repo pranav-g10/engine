@@ -1,111 +1,100 @@
-section#pricing.bg-light-gray
-  .container
+section#pricing.parallax-window-plan data-image-src="/assets/landing_page/about/3.jpg" data-parallax="scroll"
+  .container-fluid
+    .text-center
+      h2 Pricing
+      br
+      h4 Choose a payment plan that works
+      br
     .row
-      .col-lg-12.text-center
-        h3.section-heading Try Pixylz free for 10 Days, and pick a plan later
-        br
-        h4.section-subheading.text-muted No credit card required. No obligation. No risk.
-        br
-
-    .row.monthly-price
       - Locomotive::Package.find_by(name: "Trial") do |package|
-        .col-sm-3 style="background-color: white;"
-          .team-member
-            h4
-              = package.name
-            hr
-            h4
-              = package.price
-            hr
-            p.text-muted
-              strong
+        .col-lg-3.col-sm-3.col-md-3.monthly-price
+          .panel.panel-default.text-center
+            .panel-heading
+              h4 = package.name
+            .panel-body
+              p.strong
                 = package.no_of_pages
-              '
-              'Pages
-              br
-              strong
+                '
+                'Pages
+              p.strong
                 = package.no_of_images
-              '
-              'Images
+                '
+                'Images
+              p.strong
+                = package.site_count
+                '
+                'Site
+            .panel-footer
+              h3 = package.price
               br
-            strong
-              = package.site_count
-            '
-            'Site
-      - Locomotive::Package.where(expire_type: "monthly").each do |package|
-        .col-sm-3 style="background-color: white;"
-          .team-member
-            h4
-              = package.name
-            hr
-            h4
-              = package.price
-            hr
-            p.text-muted
-              strong
-                = package.no_of_pages
-              '
-              'Pages
-              br
-              strong
-                = package.no_of_images
-              '
-              'Images
-              br
-            strong
-              = package.site_count
-            '
-            'Sites
+              h4 per month
 
-    .row.yearly-price
-      - Locomotive::Package.find_by(name: "Trial") do |package|
-        .col-sm-3 style="background-color: white;"
-          .team-member
-            h4
-              = package.name
-            hr
-            h4
-              = package.price
-            hr
-            p.text-muted
-              strong
-                = package.no_of_pages
-              '
-              'Pages
-              br
-              strong
-                = package.no_of_images
-              '
-              'Images
-              br
-            strong
-              = package.site_count
-            '
-            'Site
-      - Locomotive::Package.where(expire_type: "yearly").each do |package|
-        .col-sm-3 style=" background-color: white;"
-          .team-member
-            h4
-              = package.name
-            hr
-            h4
-              = package.price
-            hr
-            p.text-muted
-              strong
-                = package.no_of_pages
-              '
-              'No. of Pages
-              br
-              strong
-                = package.no_of_images
-              '
-              'No. of Images
-              br
-            strong
-              = package.site_count
-            '
-            'Sites
+        - Locomotive::Package.where(expire_type: "monthly").each do |package|
+          .col-lg-3.col-sm-3.col-md-3.monthly-price
+            .panel.panel-default.text-center
+              .panel-heading
+                h4 = package.name
+              .panel-body
+                p.strong
+                 = package.no_of_pages
+                 '
+                 'Pages
+                p.strong
+                  = package.no_of_images
+                  '
+                  'Images
+                p.strong
+                  = package.site_count
+                  '
+                  'Sites
+              .panel-footer
+                h3 = package.price
+                br
+                h4 per month
+        - Locomotive::Package.find_by(name: "Trial") do |package|
+          .col-lg-3.col-sm-3.col-md-3.yearly-price
+            .panel.panel-default.text-center
+              .panel-heading
+                h4 = package.name
+              .panel-body
+                p.strong
+                  = package.no_of_pages
+                  '
+                  'Pages
+                p.strong
+                  = package.no_of_images
+                  '
+                  'Images
+                p.strong
+                  = package.site_count
+                  '
+                  'Site
+              .panel-footer
+                h3 = package.price
+                br
+                h4 per month
+        - Locomotive::Package.where(expire_type: "yearly").each do |package|
+          .col-lg-3.col-sm-3.col-md-3.yearly-price
+            .panel.panel-default.text-center
+              .panel-heading
+                h4 = package.name
+              .panel-body
+                p.strong
+                  = package.no_of_pages
+                  '
+                  'Pages
+                p.strong
+                  = package.no_of_images
+                  '
+                  'Images
+                p.strong
+                  = package.site_count
+                  '
+                  'Sites
+              .panel-footer
+                h3 = package.price
+                br
+                h4 per month
     .row
       .col-lg-12.text-center
         span monthly billing
