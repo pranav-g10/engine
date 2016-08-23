@@ -133,10 +133,8 @@ $(document).ready(function(){
         }});
     });
 
-    $('.parallax-window').parallax({imageSrc: '/assets/landing_page/header-bg.jpg'});
-
-
-
+    $('.parallax-window-header').parallax({imageSrc: '/assets/landing_page/header-bg.jpg'});
+    $('.parallax-window-contact').parallax({imageSrc: '/assets/landing_page/dotted-world-map-vector-1.png'});
 
 });
 
