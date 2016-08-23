@@ -11,14 +11,13 @@ html xmlns='http://www.w3.org/1999/xhtml' lang=I18n.locale
     link href="https://fonts.googleapis.com/css?family=Kaushan+Script" rel="stylesheet" type="text/css" /
     link href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic" rel="stylesheet" type="text/css" /
     link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css" /
-    link href="locomotive/agency.scss" /
+    link href="landing_page/agency.scss" /
 
     javascript:
       window.Locomotive = {mounted_on: '#{Locomotive.mounted_on}'}
 
     = javascript_include_tag 'locomotive'
     = stylesheet_link_tag 'locomotive/application', media: 'screen'
-
     javascript:
       window.locale = '#{I18n.locale}';
       window.content_locale = '#{::Mongoid::Fields::I18n.locale}';

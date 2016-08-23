@@ -22,7 +22,6 @@
 //= require locomotive/vendor
 //= require ./locomotive/application
 //= require ./locomotive/fancybox
-//= require locomotive/parallax
 
 
 $(document).ready(function(){
