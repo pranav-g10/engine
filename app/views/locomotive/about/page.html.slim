@@ -11,14 +11,13 @@ html xmlns='http://www.w3.org/1999/xhtml' lang=I18n.locale
     link href="https://fonts.googleapis.com/css?family=Kaushan+Script" rel="stylesheet" type="text/css" /
     link href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic" rel="stylesheet" type="text/css" /
     link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css" /
-    link href="locomotive/agency.scss" /
+    link href="landing_page/agency.scss" /
 
     javascript:
       window.Locomotive = {mounted_on: '#{Locomotive.mounted_on}'}
 
     = javascript_include_tag 'locomotive'
     = stylesheet_link_tag 'locomotive/application', media: 'screen'
-
     javascript:
       window.locale = '#{I18n.locale}';
       window.content_locale = '#{::Mongoid::Fields::I18n.locale}';
@@ -241,17 +240,17 @@ html xmlns='http://www.w3.org/1999/xhtml' lang=I18n.locale
               .row
                 .col-md-6
                   .form-group
-                    input#name.form-control data-validation-required-message=("Please enter your name.") placeholder=("Your Name *") required="" type="text" /
+                    input#name.form-control name="name" placeholder=("Your Name *") required="" type="text" /
                     p.help-block.text-danger
                   .form-group
-                    input#email.form-control data-validation-required-message=("Please enter your email address.") placeholder=("Your Email *") required="" type="email" /
+                    input#email.form-control name="email" placeholder=("Your Email *") required="" type="email" /
                     p.help-block.text-danger
                   .form-group
-                    input#phone.form-control data-validation-required-message=("Please enter your phone number.") placeholder=("Your Phone *") required="" type="tel" /
+                    input#phone.form-control name="phone" placeholder=("Your Phone *") required="" type="tel" /
                     p.help-block.text-danger
                 .col-md-6
                   .form-group
-                    textarea#message.form-control data-validation-required-message=("Please enter a message.") placeholder=("Your Message *") required=""
+                    textarea#message.form-control placeholder=("Your Message")
                     p.help-block.text-danger
                 .clearfix
                 .col-lg-12.text-center
@@ -279,4 +278,3 @@ html xmlns='http://www.w3.org/1999/xhtml' lang=I18n.locale
                 a href="#"  Privacy Policy
               li
                 a href="#"  Terms of Use
-
