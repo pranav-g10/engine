@@ -36,9 +36,7 @@ module Locomotive
         handle  = site_handle(request)
 
         return nil if handle == 'api'
-
         Locomotive.log "[fetch site] host = #{request.host} / site_handle = #{handle.inspect} / locale = #{::Mongoid::Fields::I18n.locale.inspect}"
-
         if handle
           fetch_from_handle(handle, request)
         elsif !request_for_the_back_office_and_default_host?(request)
@@ -113,15 +111,19 @@ module Locomotive
       # Is it a request for the back-office AND the domain used to also
       # render the site of the Rails application?
       def request_for_the_back_office_and_default_host?(request)
-        default_host?(request) && request.path_info =~ /#{Locomotive.mounted_on}\//
+        main_domain(request) || default_host?(request) && request.path_info =~ /#{Locomotive.mounted_on}\//
       end
 
       def default_host?(request)
-        (default_host && request.host == default_host) || localhost?(request)
+        (default_host && request.host == default_host) || localhost?(request) || main_domain(request)
       end
 
       def localhost?(request)
         request.host == '0.0.0.0' || request.host == 'localhost'
+      end
+
+      def main_domain(request)
+        request.host == 'pixylz.herokuapp.com'
       end
 
       def default_host

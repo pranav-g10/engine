@@ -33,7 +33,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'mongo_session_store-rails4',      '~> 6.0.0'
 
   s.add_dependency 'custom_fields',                   '~> 2.7.0.rc1'
-  s.add_dependency 'locomotivecms_steam',             '~> 1.1.1'
+  s.add_dependency 'locomotivecms_steam',             '~> 1.2.0.rc1'
 
   s.add_dependency 'slim',                            '~> 3.0.6'
   s.add_dependency 'simple_form',                     '~> 3.2.0'
@@ -79,19 +79,19 @@ Gem::Specification.new do |s|
                         '{vendor}/**/*']
 
   s.test_files = Dir[
-    'features/**/*',
-    'spec/{fixtures,lib,mailers,models,requests,support}/**/*',
-    'spec/dummy/Rakefile',
-    'spec/dummy/config.ru',
-    'spec/dummy/{app,config,lib,script}/**/*',
-    'spec/dummy/public/*.html'
+      'features/**/*',
+      'spec/{fixtures,lib,mailers,models,requests,support}/**/*',
+      'spec/dummy/Rakefile',
+      'spec/dummy/config.ru',
+      'spec/dummy/{app,config,lib,script}/**/*',
+      'spec/dummy/public/*.html'
   ]
 
   s.require_path = 'lib'
 
   s.extra_rdoc_files = [
-    'LICENSE',
-     'README.md'
+      'LICENSE',
+      'README.md'
   ]
 
 end

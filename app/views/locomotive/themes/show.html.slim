@@ -6,7 +6,7 @@ div class="mrgn_lft_2_pt padding_lft_10_pt padding_rgt_10_pt"
     - Locomotive::Site.themes.each do |site|
       div class="col-lg-6 col-md-6 col-sm-6 col-xs-12"
         div class="well panel panel-body" style=("max-width: 342px;") 
-          = image_tag "locomotive/#{site.metafields_ui["theme_name"]}_theme.png", class: 'img_res'
+          = image_tag "locomotive/#{site.metafields_ui["theme_name"]}.png", class: 'img_res'
           div class="row mrgn_top_2"
             div class="col-lg-6 col-md-6 col-sm-6 col-xs-6"
               = link_to 'Live Demo' , preview_path(site), class: 'mrgn_lft_15'
