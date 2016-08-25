@@ -4,7 +4,7 @@
 source "https://rubygems.org"
 
 gemspec # Include gemspec dependencies
-
+ruby '2.2.3'
 gem 'sass-rails', '~> 5.0.4'
 gem 'coffee-rails', '~> 4.1.0'
 gem 'uglifier',     '>= 2.5.3'
