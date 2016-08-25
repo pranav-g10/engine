@@ -71,7 +71,7 @@ group :test do
   gem 'grape-entity-matchers'
   gem 'shoulda-matchers',     '2.7.0'
 
-  gem 'factory_girl_rails'
+  # gem 'factory_girl_rails'
   gem 'pickle'
   gem 'json_spec',            '~> 1.1.4'
   gem 'database_cleaner',     github: 'DatabaseCleaner/database_cleaner'
@@ -80,4 +80,8 @@ group :test do
   gem 'email_spec'
 
   # gem 'debugger', git: 'git://github.com/cldwalker/debugger.git'
+end
+
+group :development, :test, :production do
+  gem 'factory_girl_rails'
 end
