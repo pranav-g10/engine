@@ -16,7 +16,7 @@ gem "sidekiq-cron", "~> 0.4.0"
 gem 'prawn'
 gem 'prawn-table'
 gem 'dotenv-rails'
-# gem 'locomotive-heroku', :require => 'locomotive/heroku'
+gem 'locomotive-heroku', git: 'https://github.com/sweetymehta/locomotive-heroku.git'
 
 group :production do
   gem 'rails_12factor'  # heroku specific
