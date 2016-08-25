@@ -46,5 +46,6 @@ module Dummy
     # let Locomotive handle custom error page
     require 'locomotive/middlewares/custom_public_exceptions'
     config.exceptions_app = Locomotive::Middlewares::CustomPublicExceptions.new(Rails.public_path)
+    config.assets.initialize_on_precompile = false
   end
 end

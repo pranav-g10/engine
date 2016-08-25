@@ -61,4 +61,10 @@ Locomotive.configure do |config|
   # to false the registration page will not be shown. (Default: true)
   # config.enable_registration = true
 
+  config.hosting = {
+      :target     => :heroku,
+      :api_key    => ENV['HEROKU_API_KEY'],
+      :app_name   => ENV['HEROKU_APP_NAME']
+  }
+
 end

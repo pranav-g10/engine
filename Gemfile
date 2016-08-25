@@ -16,9 +16,13 @@ gem "sidekiq-cron", "~> 0.4.0"
 gem 'prawn'
 gem 'prawn-table'
 gem 'dotenv-rails'
+# gem 'locomotive-heroku', :require => 'locomotive/heroku'
 
+group :production do
+  gem 'rails_12factor'  # heroku specific
+end
 
-group :test, :development do
+group :test, :development, :production do
   gem 'rspec-rails', '~> 3.2.1' #~> 2.14.2' # In order to have rspec tasks and generators
   gem 'pry'
 end

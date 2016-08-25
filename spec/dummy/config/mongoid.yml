@@ -133,3 +133,31 @@ test:
       options:
         truncate_logs: false
         max_pool_size: 1
+
+production:
+  clients:
+    default:
+      # The standard MongoDB connection URI allows for easy
+      # replica set connection setup.
+      # Use environment variables or a config file to keep your
+      # credentials safe.
+      uri: <%= ENV['MONGOLAB_URI'] %>
+      autocreate_indexes: true
+
+      options:
+        # :read
+        #:primary: Will always read from a primary node. (default)
+        #:primary_preferred: Attempt a primary first, then secondary if none available.
+        #:secondary: Will always read from a secondary node.
+        #:secondary_preferred: Attempt a secondary first, then primary if none available.
+        #:nearest: Attempt to read from the node with the lowest latency.
+        read:
+          mode: :primary_preferred
+
+  options:
+    # Raise an error when performing a #find and the document is not found.
+    # (default: true)
+    raise_not_found_error: true
+
+    # Ensure all times are UTC in the app side. (default: false)
+    use_utc: true
