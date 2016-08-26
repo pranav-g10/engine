@@ -136,8 +136,4 @@ test:
 production:
   clients:
     default:
-      database: <%= Rails.application.class.parent.to_s.underscore.downcase %>_production
-      hosts:
-        - localhost:27017
-      options:
-        max_pool_size: 1
+      uri: <%= ENV['MONGOLAB_URI'] %>
