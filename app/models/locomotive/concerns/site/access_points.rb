@@ -9,7 +9,7 @@ module Locomotive
 
           ## fields ##
           field :handle
-          field :domains, type: Array, default: ['pixylz.herokuapp.com']
+          field :domains, type: Array, default: []
           field :redirect_to_first_domain, type: Boolean, default: false
 
           ## indexes ##
