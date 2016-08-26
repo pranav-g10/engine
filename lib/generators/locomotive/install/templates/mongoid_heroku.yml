@@ -68,8 +68,8 @@ test:
       options:
         # consistency: :strong
         # identity_map_enabled: true
-        
+
 production:
   sessions:
     default:
-      uri: <%= ENV['MONGOLAB_URI'] %>
+      uri: <%= ENV['MONGODB_URI'] %>
