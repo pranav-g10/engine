@@ -117,11 +117,15 @@ module Locomotive
       end
 
       def default_host?(request)
-        (default_host && request.host == default_host) || localhost?(request)
+        (default_host && request.host == default_host) || localhost?(request) || main_domain(request)
       end
 
       def localhost?(request)
         request.host == '0.0.0.0' || request.host == 'localhost'
+      end
+
+      def main_domain(request)
+        request.host == 'pixylz.herokuapp.com'
       end
 
       def default_host
