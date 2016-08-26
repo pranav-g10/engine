@@ -111,8 +111,8 @@ module Locomotive
       # Is it a request for the back-office AND the domain used to also
       # render the site of the Rails application?
       def request_for_the_back_office_and_default_host?(request)
-        Locomotive.log "[ddd] request = #{default_host?(request) && request.path_info =~ /#{Locomotive.mounted_on}\//} CHHHHH #{Locomotive.mounted_on}"
-        default_host?(request) && request.path_info =~ /#{Locomotive.mounted_on}\//
+        Locomotive.log "[ddd] result = #{main_domain(request)} #{default_host?(request) && request.path_info =~ /#{Locomotive.mounted_on}\//}"
+        main_domain(request) || default_host?(request) && request.path_info =~ /#{Locomotive.mounted_on}\//
       end
 
       def default_host?(request)
