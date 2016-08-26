@@ -62,7 +62,6 @@ module Locomotive
         end
 
         def domains_must_be_valid_and_unique
-          byebug
           return if self.domains.empty?
 
           self.domains.each do |domain|
