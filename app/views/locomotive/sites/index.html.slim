@@ -10,7 +10,7 @@
 
   .public-entries
     = render @sites
-    - if !sites_limit_crossed?
+    - if !sites_limit_crossed? || current_locomotive_account.super_admin?
       = link_to new_site_url, class: 'public-entry is-add' do
         i.fa.fa-plus
         = t('.new')

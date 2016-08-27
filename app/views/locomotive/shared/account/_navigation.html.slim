@@ -6,7 +6,7 @@ ul.navigation-links
       span.caret
 
     ul.dropdown-menu role='menu' aria-labelledby="navigation-dropdown"
-      - if current_locomotive_account.account_package.present?
+      - if !current_locomotive_account.super_admin && current_locomotive_account.account_package.present?
         li= link_to t(:sites, scope: 'locomotive.shared.header'), sites_path
       li= link_to t(:account, scope: 'locomotive.shared.header'), edit_my_account_path(_location: request.fullpath)
       li= link_to t(:help, scope: 'locomotive.shared.header'), 'http://locomotive-v3.readme.io', target: '_blank'
