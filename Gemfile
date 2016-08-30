@@ -16,6 +16,8 @@ gem "sidekiq-cron", "~> 0.4.0"
 gem 'prawn'
 gem 'prawn-table'
 gem 'dotenv-rails'
+gem 'fog'
+gem 'carrierwave', '0.10.0'
 # gem 'locomotive-heroku', :require => 'locomotive/heroku'
 
 group :production do

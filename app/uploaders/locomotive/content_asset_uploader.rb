@@ -5,6 +5,8 @@ module Locomotive
 
     include Locomotive::CarrierWave::Uploader::Asset
 
+    storage :fog
+
     def store_dir
       self.build_store_dir('sites', model.site_id, 'assets', model.id)
     end

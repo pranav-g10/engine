@@ -4,6 +4,7 @@ module Locomotive
   class ThemeAssetUploader < ::CarrierWave::Uploader::Base
 
     include Locomotive::CarrierWave::Uploader::Asset
+    storage :fog
 
     def store_dir
       self.build_store_dir('sites', model.site_id, 'theme', model.folder)
