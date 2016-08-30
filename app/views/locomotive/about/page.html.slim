@@ -30,29 +30,23 @@ html xmlns='http://www.w3.org/1999/xhtml' lang=I18n.locale
 
       });
 
-    /= csrf_meta_tag
-
-    /= yield :head
-
   body class=[controller.controller_name, controller.action_name, flash.empty? ? '' : 'with-flash'].join(' ')
     nav#mainNav.navbar.navbar-default.navbar-custom.navbar-fixed-top.padding_6px style="background-color: #292828;"
       .container
         /! Brand and toggle get grouped for better mobile display
         .navbar-header.page-scroll
-          button.navbar-toggle data-target="#bs-example-navbar-collapse-1" data-toggle="collapse" type="button"
+          button.navbar-toggle data-target="#navbar-collapse-homepage" data-toggle="collapse" type="button"
             span.sr-only Toggle navigation
             | Menu
             i.fa.fa-bars
           a.navbar-brand.page-scroll href="#page-top"  App Street
         /! Collect the nav links, forms, and other content for toggling
-        #bs-example-navbar-collapse-1.collapse.navbar-collapse
+        #navbar-collapse-homepage.navbar-collapse.collapse
           ul.nav.navbar-nav.navbar-right
             li.hidden
               a href="#page-top"
             li
               a.page-scroll href="#services"  Services
-            /li
-            /  a.page-scroll href="#portfolio"  Portfolio
             li
               a.page-scroll href="#about"  About
             li
@@ -278,3 +272,8 @@ html xmlns='http://www.w3.org/1999/xhtml' lang=I18n.locale
                 a href="#"  Privacy Policy
               li
                 a href="#"  Terms of Use
+
+  javascript:
+    $(".navbar-toggle").click(function (event) {
+      $(".navbar-collapse").slideToggle(1000);
+    });
