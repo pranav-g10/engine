@@ -1,0 +1,108 @@
+.project_div img {
+  height: 250px;
+  width: 100%; }
+
+.project-description img {
+  height: 350px;
+  width: 350px; }
+
+.hover_bg {
+  background-color: #e6f04e !important; }
+
+.project_detail_caraousel {
+  padding: 60px;
+  max-width: 700px !important; }
+
+.project_detail_caraousel .carousel-inner .item img {
+  width: 100%; }
+
+.project_detail_caraousel .carousel a.left, .project_detail_caraousel .carousel a.right {
+  display: none; }
+
+.project_detail_caraousel .carousel:hover a.left, .project_detail_caraousel .carousel:hover a.right {
+  display: block; }
+
+.project_title {
+  font-family: serif;
+  float: left;
+  padding: 10px; }
+
+.project_title a {
+  color: #789090; }
+
+.section {
+  padding-top: 80px;
+  padding-bottom: 80px; }
+
+.spacer-20 {
+  margin: 20px 0;
+  margin-top: 20px;
+  margin-right: 0px;
+  margin-bottom: 20px;
+  margin-left: 0px;
+  border-top: 0px; }
+
+.title, .contacts {
+  text-align: left; }
+
+.contacts .contact-row i {
+  float: left;
+  display: block;
+  margin: 5px 0 0; }
+
+.contact-row p {
+  padding-left: 25px;
+  margin-bottom: 8px; }
+
+.no-content {
+  font-family: fantasy;
+  padding: 20%;
+  font-size: 100px; }
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%; }
+
+html {
+  position: relative;
+  min-height: 100%; }
+
+body {
+  margin-bottom: 100px !important; }
+
+.img-container {
+  width: 500px;
+  height: 500px;
+  display: inline-block;
+  overflow: hidden; }
+
+.width_500_px {
+  width: 500px; }
+
+input#search[type=text] {
+  width: 130px;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  background-color: white;
+  background-image: url("/sites/57c9110e2980d3ce624d5907/theme/images/searchicon.png?be93f525885d6b578a4267a64599bff8");
+  background-position: 10px 10px;
+  background-repeat: no-repeat;
+  padding: 12px 20px 12px 40px;
+  -webkit-transition: width 0.4s ease-in-out;
+  transition: width 0.4s ease-in-out; }
+
+input#search[type=text]:focus {
+  width: 100%; }
+
+.tags-nav {
+  display: inline-block;
+  margin-right: 50px; }
+
+.tags {
+  margin-left: 55px; }
+
+.navbar-brand {
+  padding-top: 15px !important; }

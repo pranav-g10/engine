@@ -1,0 +1,39 @@
+.team_member .caption {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: rgba(57, 59, 60, 0.75);
+  width: 100%;
+  height: 100%;
+  padding: 2%;
+  display: none;
+  text-align: center;
+  color: #fff !important;
+  z-index: 2; }
+
+.team_member .thumbnail {
+  position: relative;
+  overflow: hidden; }
+
+.team_member .caption .team_description {
+  margin-top: 41%; }
+
+.team_member .caption .animated {
+  animation-delay: 0.3s;
+  animation-fill-mode: both; }
+
+.team_member .thumbnail > img {
+  display: block;
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  height: 340px;
+  width: 560px; }
+
+.card-block img {
+  width: 100px;
+  height: 100px; }
+
+.social_url {
+  display: inline !important;
+  padding: .75em; }
