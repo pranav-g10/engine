@@ -23,8 +23,9 @@ module Locomotive
             maintain_assoc
             generate_helpers(from_site)
             # copying assets
-            FileUtils::mkdir_p  "#{Rails.root}/public/sites/#{self.id.to_s}/theme/"
-            FileUtils.cp_r "#{Rails.root}/public/sites/#{from_site.id.to_s}/theme/.", "#{Rails.root}/public/sites/#{self.id.to_s}/theme/."
+            copy_assets_to_s3(from)
+            # FileUtils::mkdir_p  "#{Rails.root}/public/sites/#{self.id.to_s}/theme/"
+            # FileUtils.cp_r "#{Rails.root}/public/sites/#{from_site.id.to_s}/theme/.", "#{Rails.root}/public/sites/#{self.id.to_s}/theme/."
 
             # copying metafields
             self.update(metafields: from_site.metafields, metafields_ui: from_site.metafields_ui,
@@ -71,6 +72,17 @@ module Locomotive
                 dummy << c.as_document
               end
               ('Locomotive::' + klass.singularize.camelize).constantize.collection.insert_many(dummy)
+            end
+          end
+
+          def copy_assets_to_s3(from)
+            bucket = Aws::S3::Bucket.new(ENV['S3_BUCKET'], region: ENV['S3_BUCKET_REGION'],
+                                         access_key_id: ENV['S3_KEY_ID'],
+                                         secret_access_key: ENV['S3_SECRET_KEY'])
+            bucket.objects(prefix: "sites/#{from.to_s}").each do |obj|
+              key = obj.key.gsub(from.to_s, self.id.to_s)
+              source_obj = bucket.object(key)
+              source_obj.copy_from("#{ENV['S3_BUCKET']}/#{obj.key}")
             end
           end
 

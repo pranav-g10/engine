@@ -4,7 +4,7 @@
 source "https://rubygems.org"
 
 gemspec # Include gemspec dependencies
-
+ruby '2.2.3'
 gem 'sass-rails', '~> 5.0.4'
 gem 'coffee-rails', '~> 4.1.0'
 gem 'uglifier',     '>= 2.5.3'
@@ -16,6 +16,9 @@ gem "sidekiq-cron", "~> 0.4.0"
 gem 'prawn'
 gem 'prawn-table'
 gem 'dotenv-rails'
+gem 'locomotive-heroku', git: 'https://github.com/sweetymehta/locomotive-heroku.git'
+# gem 'fog'
+gem 'carrierwave-aws'
 # gem 'locomotive-heroku', :require => 'locomotive/heroku'
 
 group :production do
@@ -71,7 +74,7 @@ group :test do
   gem 'grape-entity-matchers'
   gem 'shoulda-matchers',     '2.7.0'
 
-  gem 'factory_girl_rails'
+  # gem 'factory_girl_rails'
   gem 'pickle'
   gem 'json_spec',            '~> 1.1.4'
   gem 'database_cleaner',     github: 'DatabaseCleaner/database_cleaner'
@@ -80,4 +83,8 @@ group :test do
   gem 'email_spec'
 
   # gem 'debugger', git: 'git://github.com/cldwalker/debugger.git'
+end
+
+group :development, :test, :production do
+  gem 'factory_girl_rails'
 end
