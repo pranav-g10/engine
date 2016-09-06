@@ -23,8 +23,9 @@ module Locomotive
             maintain_assoc
             generate_helpers(from_site)
             # copying assets
-            FileUtils::mkdir_p  "#{Rails.root}/public/sites/#{self.id.to_s}/theme/"
-            FileUtils.cp_r "#{Rails.root}/public/sites/#{from_site.id.to_s}/theme/.", "#{Rails.root}/public/sites/#{self.id.to_s}/theme/."
+            copy_assets_to_s3(from)
+            # FileUtils::mkdir_p  "#{Rails.root}/public/sites/#{self.id.to_s}/theme/"
+            # FileUtils.cp_r "#{Rails.root}/public/sites/#{from_site.id.to_s}/theme/.", "#{Rails.root}/public/sites/#{self.id.to_s}/theme/."
 
             # copying metafields
             self.update(metafields: from_site.metafields, metafields_ui: from_site.metafields_ui,
@@ -71,6 +72,24 @@ module Locomotive
                 dummy << c.as_document
               end
               ('Locomotive::' + klass.singularize.camelize).constantize.collection.insert_many(dummy)
+            end
+          end
+
+          def copy_assets_to_s3(from)
+            client = Aws::S3::Client.new(access_key_id: ENV['S3_KEY_ID'], secret_access_key: ENV['S3_SECRET_KEY'],
+                                         region: ENV['S3_BUCKET_REGION'])
+            client.list_objects(bucket: 'vmasseur', prefix: "sites/#{from.to_s}").each do |res|
+              res.contents.each do |obj|
+                File.open('filename', 'wb') do |file|
+                  client.get_object({bucket: 'vmasseur', key: obj.key}, target: file)
+                end
+                File.open('filename', 'rb') do |file|
+                  key = obj.key.gsub(from.to_s, self.id.to_s)
+                  client.put_object({ bucket: 'vmasseur',
+                                      key: key,
+                                      body: file})
+                end
+              end
             end
           end
 

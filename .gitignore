@@ -40,8 +40,8 @@ permanent
 doc/bushido
 *.swp
 .sass-cache/
-/spec/dummy/public/sites/
 /spec/dummy/tmp/
+/spec/dummy/public/sites/
 /spec/dummy/spec/tmp
 /spec/dummy/log/*.log
 /spec/dummy/tmp/**/*
