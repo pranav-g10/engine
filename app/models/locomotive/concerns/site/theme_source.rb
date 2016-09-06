@@ -76,20 +76,13 @@ module Locomotive
           end
 
           def copy_assets_to_s3(from)
-            client = Aws::S3::Client.new(access_key_id: ENV['S3_KEY_ID'], secret_access_key: ENV['S3_SECRET_KEY'],
-                                         region: ENV['S3_BUCKET_REGION'])
-            client.list_objects(bucket: 'vmasseur', prefix: "sites/#{from.to_s}").each do |res|
-              res.contents.each do |obj|
-                File.open('filename', 'wb') do |file|
-                  client.get_object({bucket: 'vmasseur', key: obj.key}, target: file)
-                end
-                File.open('filename', 'rb') do |file|
-                  key = obj.key.gsub(from.to_s, self.id.to_s)
-                  client.put_object({ bucket: 'vmasseur',
-                                      key: key,
-                                      body: file})
-                end
-              end
+            bucket = Aws::S3::Bucket.new(ENV['S3_BUCKET'], region: ENV['S3_BUCKET_REGION'],
+                                         access_key_id: ENV['S3_KEY_ID'],
+                                         secret_access_key: ENV['S3_SECRET_KEY'])
+            bucket.objects(prefix: "sites/#{from.to_s}").each do |obj|
+              key = obj.key.gsub(from.to_s, self.id.to_s)
+              source_obj = bucket.object(key)
+              source_obj.copy_from("#{ENV['S3_BUCKET']}/#{obj.key}")
             end
           end
 
