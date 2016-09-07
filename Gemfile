@@ -17,9 +17,8 @@ gem 'prawn'
 gem 'prawn-table'
 gem 'dotenv-rails'
 gem 'locomotive-heroku', git: 'https://github.com/sweetymehta/locomotive-heroku.git'
-# gem 'fog'
 gem 'carrierwave-aws'
-# gem 'locomotive-heroku', :require => 'locomotive/heroku'
+
 group :production do
   gem 'rails_12factor'  # heroku specific
 end
