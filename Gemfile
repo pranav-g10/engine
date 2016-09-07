@@ -20,7 +20,6 @@ gem 'locomotive-heroku', git: 'https://github.com/sweetymehta/locomotive-heroku.
 # gem 'fog'
 gem 'carrierwave-aws'
 # gem 'locomotive-heroku', :require => 'locomotive/heroku'
-
 group :production do
   gem 'rails_12factor'  # heroku specific
 end
