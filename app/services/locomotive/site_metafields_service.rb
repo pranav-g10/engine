@@ -21,7 +21,7 @@ module Locomotive
     end
 
     def restore
-      property_type = Locomotive::ContentType.by_id_or_slug('properties').first
+      property_type = site.content_types.by_id_or_slug('properties').first
       default_fields = property_type.entries.map(&:title)
       property_entries = property_type.entries
       default_fields.each do |field|
