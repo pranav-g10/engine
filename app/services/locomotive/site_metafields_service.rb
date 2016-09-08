@@ -26,11 +26,13 @@ module Locomotive
       property_entries = property_type.entries
       default_fields.each do |field|
         if field != "theme_logo"
-          type = property_entries.find_by(title: field)
-          values = type.values
-          keys = site.metafields[field].keys
-          keys.each do |key1|
-            site.metafields[field][key1]  = values.find_by(name: key1).value
+          type = property_entries.select{|a| a.title == field}
+          values = type.try(:first).values
+          if site.metafields[field]
+            keys = site.metafields[field].keys
+            keys.each do |key1|
+              site.metafields[field][key1]  = values.find_by(name: key1).value
+            end
           end
         end
       end

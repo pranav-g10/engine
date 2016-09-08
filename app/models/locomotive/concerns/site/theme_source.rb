@@ -22,6 +22,8 @@ module Locomotive
             generate_models(from_site)
             maintain_assoc
             generate_helpers(from_site)
+            self.content_types.by_id_or_slug('properties').first.entries << from_site.content_types.by_id_or_slug('properties').first.entries
+            self.content_types.by_id_or_slug('values').first.entries << from_site.content_types.by_id_or_slug('values').first.entries
             # copying assets
             case Rails.env.to_sym
 
