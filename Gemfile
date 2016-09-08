@@ -21,6 +21,7 @@ gem 'carrierwave-aws'
 
 group :production do
   gem 'rails_12factor'  # heroku specific
+  gem 'unicorn'
 end
 
 group :test, :development, :production do
