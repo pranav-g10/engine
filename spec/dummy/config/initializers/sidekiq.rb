@@ -1,3 +1,6 @@
+require 'sidekiq'
+require 'sidekiq-cron'
+
 schedule_file = "config/scheduler.yml"
 
 if File.exists?(schedule_file) && Sidekiq.server?
