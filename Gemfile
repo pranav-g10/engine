@@ -18,10 +18,9 @@ gem 'prawn-table'
 gem 'dotenv-rails'
 gem 'locomotive-heroku', git: 'https://github.com/sweetymehta/locomotive-heroku.git'
 gem 'carrierwave-aws'
-
 group :production do
   gem 'rails_12factor'  # heroku specific
-  gem 'unicorn'
+
 end
 
 group :test, :development, :production do
