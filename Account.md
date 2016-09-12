@@ -1,4 +1,4 @@
-# Sign up Api
+### Sign up Api
 
 POST /locomotive/api/v3/my_account.json
 
