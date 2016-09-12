@@ -18,9 +18,9 @@
     - cache(cache_key_for_sidebar_content_types) do
       = render 'locomotive/shared/sidebar/content_types'
 
-    = link_to content_assets_path(current_site), class: sidebar_link_class(:content_assets) do
-      i.fa.fa-picture-o
-      span= t('.assets')
+    /= link_to content_assets_path(current_site), class: sidebar_link_class(:content_assets) do
+    /  i.fa.fa-picture-o
+    /  span= t('.assets')
 
     - if current_site.translations.count > 0
       = link_to translations_path(current_site), class: sidebar_link_class(:translations) do
