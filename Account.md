@@ -47,3 +47,13 @@ request=
 response = {"_id":"5650f08c87f6436c94000000","created_at":"2015-11-21T22:30:36Z","updated_at":"2015-11-21T22:30:57Z","name":"John      Doe","email":"admin@locomotivecms.com","locale":"en","api_key":"d49cd50f6f0d2b163f48fc73cb249f0244c37074","super_admin":false,"local_admin":true}
 
 
+### Get an Account Detail
+
+**GET** /locomotive/api/v3/my_account.json?auth_token=E2aoXzMxkFsLnCcmCcc_
+
+request= ""
+
+response = {"_id":"5650f08c87f6436c94000000","created_at":"2015-11-21T22:30:36Z","updated_at":"2015-11-21T22:30:57Z","name":"John      Doe","email":"admin@locomotivecms.com","locale":"en","api_key":"d49cd50f6f0d2b163f48fc73cb249f0244c37074","super_admin":false,"local_admin":true}
+
+
+
