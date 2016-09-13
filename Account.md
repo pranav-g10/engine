@@ -5,7 +5,7 @@
 request= 
 {
  "account":{
-            "email": "jack@gmail.com",
+        "email": "jaack@gmail.com",
 	    "name" :"JackDoe",
 	    "password": "easyone",
 	    "password_confirmation": "easyone"
