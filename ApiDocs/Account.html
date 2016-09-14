@@ -119,31 +119,38 @@
 
         <div class="method-description">
           
-          <pre>Sign up
-== POST /locomotive/api/v3/my_account.json
-=== REQUEST
- { &quot;account&quot;:{
-     &quot;email&quot;: &quot;jaack@gmail.com&quot;,
-     &quot;name&quot; :&quot;JackDoe&quot;,
-     &quot;password&quot;: &quot;easyone&quot;,
-     &quot;password_confirmation&quot;: &quot;easyone&quot;
- } }
-=== RESPONSE
- {&quot;_id&quot;:&quot;5650f0a087f6436cbc000000&quot;,
-  &quot;created_at&quot;:&quot;2015-11-21T22:30:56Z&quot;,
-  &quot;updated_at&quot;:&quot;2015-11-21T22:30:56Z&quot;,
-  &quot;name&quot;:&quot;Jack Doe&quot;,&quot;email&quot;:&quot;jack@doe.net&quot;,
-  &quot;locale&quot;:&quot;en&quot;,
-  &quot;api_key&quot;:&quot;92f2e03b57b3f31f485ecf4d99bc94ea20eee862&quot;,
-  &quot;super_admin&quot;:false,
-  &quot;local_admin&quot;:false }</pre>
+          <pre class="ruby"><span class="ruby-constant">Sign</span> <span class="ruby-identifier">up</span>
+</pre>
+
+<h2 id="method-i-index-label-POST+-2Flocomotive-2Fapi-2Fv3-2Fmy_account.json">POST /locomotive/api/v3/my_account.json<span><a href="#method-i-index-label-POST+-2Flocomotive-2Fapi-2Fv3-2Fmy_account.json">&para;</a> <a href="#top">&uarr;</a></span></h2>
+
+<h3 id="method-i-index-label-REQUEST">REQUEST<span><a href="#method-i-index-label-REQUEST">&para;</a> <a href="#top">&uarr;</a></span></h3>
+
+<pre>{ &quot;account&quot;:{
+    &quot;email&quot;: &quot;jaack@gmail.com&quot;,
+    &quot;name&quot; :&quot;JackDoe&quot;,
+    &quot;password&quot;: &quot;easyone&quot;,
+    &quot;password_confirmation&quot;: &quot;easyone&quot;
+} }</pre>
+
+<h3 id="method-i-index-label-RESPONSE">RESPONSE<span><a href="#method-i-index-label-RESPONSE">&para;</a> <a href="#top">&uarr;</a></span></h3>
+
+<pre class="ruby">{<span class="ruby-string">&quot;_id&quot;</span><span class="ruby-operator">:</span><span class="ruby-string">&quot;5650f0a087f6436cbc000000&quot;</span>,
+ <span class="ruby-string">&quot;created_at&quot;</span><span class="ruby-operator">:</span><span class="ruby-string">&quot;2015-11-21T22:30:56Z&quot;</span>,
+ <span class="ruby-string">&quot;updated_at&quot;</span><span class="ruby-operator">:</span><span class="ruby-string">&quot;2015-11-21T22:30:56Z&quot;</span>,
+ <span class="ruby-string">&quot;name&quot;</span><span class="ruby-operator">:</span><span class="ruby-string">&quot;Jack Doe&quot;</span>,<span class="ruby-string">&quot;email&quot;</span><span class="ruby-operator">:</span><span class="ruby-string">&quot;jack@doe.net&quot;</span>,
+ <span class="ruby-string">&quot;locale&quot;</span><span class="ruby-operator">:</span><span class="ruby-string">&quot;en&quot;</span>,
+ <span class="ruby-string">&quot;api_key&quot;</span><span class="ruby-operator">:</span><span class="ruby-string">&quot;92f2e03b57b3f31f485ecf4d99bc94ea20eee862&quot;</span>,
+ <span class="ruby-string">&quot;super_admin&quot;</span><span class="ruby-operator">:</span><span class="ruby-keyword">false</span>,
+ <span class="ruby-string">&quot;local_admin&quot;</span><span class="ruby-operator">:</span><span class="ruby-keyword">false</span> }
+</pre>
 <hr>
           
           
 
           
           <div class="method-source-code" id="index-source">
-            <pre><span class="ruby-comment"># File spec/dummy/api_docs/account.rb, line 22</span>
+            <pre><span class="ruby-comment"># File spec/dummy/api_docs/account.rb, line 24</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">index</span>;<span class="ruby-keyword">end</span></pre>
           </div>
           
