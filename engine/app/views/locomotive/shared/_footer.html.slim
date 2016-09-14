@@ -1,8 +1,0 @@
-.notice-bar style=("display: block;")
-  .notice-bar-inner
-    .pull-right
-      span.days-left-of-trial
-      = "#{current_locomotive_account.account_package.days_left} days free trial remaining"
-      = link_to 'Upgrade Now', packages_path, class: "btn"
-    .notice-bar-content
-      | Note: During your free trial, your site is not visible to the public, only to you.

@@ -1,7 +1,0 @@
-== NOTES
-
-==== HEADERS
-* APP_ID: Mandatory, allowed values are 'cablo_user', 'cablo_driver', 'cablo_vendor', 'cablo_admin'
-* APP_VER: Mandtory (see change log for 2016-04-18 below)
-* LOGIN_ID: Mandatory post login
-* AUTH_TOKEN: Mandatory post login
