@@ -1,0 +1,21 @@
+- title t('.title')
+
+= content_for :header do
+  = render 'locomotive/shared/account_navigation'
+
+.public-box.without-padding
+  .public-intro.with-padding
+    h3= t('.title')
+    p= t('.description')
+
+  .public-entries
+    = render @sites
+    - if !sites_limit_crossed? || current_locomotive_account.super_admin?
+      = link_to new_site_url, class: 'public-entry is-add' do
+        i.fa.fa-plus
+        = t('.new')
+    - else
+      .public-entry
+        span Sites limit has been reached. Please upgrade your plan
+        = link_to 'Upgrade Now', packages_path, class: "btn btn-primary btn-sm"
+

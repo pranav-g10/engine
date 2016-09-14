@@ -1,0 +1,7 @@
+= link_to (plan_expired? ? "": dashboard_url(site)), class: 'public-entry',data: plan_expired? ? { toggle: 'modal', target: '#myModal' } : '' do
+  = image_tag site_picture_url(site), alt: site.name
+  .public-entry-info
+    h5= site.name.truncate(35)
+    p= site.main_domain.try(:truncate, 50) || t('.no_domain')
+    i.fa.fa-arrow-right
+

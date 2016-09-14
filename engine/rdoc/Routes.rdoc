@@ -1,0 +1,2 @@
+* {GET /api/v1/otp/verify}[link:Api/V1/OtpController]
+

@@ -1,0 +1,86 @@
+.theme_img_size {
+  width: inherit;
+  height: inherit;
+}
+.mrgn_lft_15{
+  margin-left: 15px;
+}
+
+.mrgn_rgt_3{
+  margin-right: 3px;
+}
+
+.mrgn_top_2{
+  margin-top: 2px;
+}
+
+.mrgn_lft_2_pt{
+  margin-left: 2%;
+}
+
+.padding_lft_10_pt{
+  padding-left: 10%;
+}
+
+.padding_rgt_10_pt{
+  padding-right: 10%;
+}
+
+.modal_template{
+  width: 500px;
+}
+@media screen and (min-width: 990px){
+.col-md-5 {
+    width: 50%;
+}
+}
+
+@media screen and (min-width: 1020px){
+.col-md-5 {
+    width: 49%;
+}
+}
+@media screen and (min-width: 1049px) and (max-width: 1099px){
+.col-md-5 {
+    width: 50%;
+}
+}
+
+.fancybox-skin .fancybox-close {
+    position: fixed;
+    top: 30px;
+    right: 35px;
+    background-image: url(sprite.png);
+    background-position: 0 -482px;
+    width: 20px;
+    height: 20px;
+    }
+.fancybox-skin{
+  background-color: white !important;
+  border-radius: 0px !important;
+}   
+.fancybox-opened .fancybox-skin {
+    box-shadow: none!important;
+}
+
+.img_res{
+  width: 100%;
+  height: 250px; 
+}
+
+.width-24{
+  position: relative;
+  min-height: 1px;
+  padding-right: 15px;
+  padding-left: 15px;
+  float: left;
+  width: 24%;
+}
+.border{
+  border-color: #1c77c3;
+  border-right-width: 3px;
+  border-left-width: 3px;
+}
+.my-error-class{
+  color: #FF0000;  /* red */;
+}

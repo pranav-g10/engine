@@ -1,0 +1,49 @@
+doctype XML
+doctype html
+html xmlns='http://www.w3.org/1999/xhtml'
+  head
+    = render 'locomotive/shared/head'
+
+  body class="sidebar-open on-main #{body_class}"
+    = render 'locomotive/shared/navigation'
+    = render 'locomotive/shared/sidebar'
+    .content-main class="#{current_locomotive_account.account_package && current_locomotive_account.account_package.package.free_trial? ? 'padding-bottom-60px' : ''}"
+      .content-overlay
+
+      .drawer
+        .close-button
+          i.fa.fa-times
+        .content-inner
+          = yield :drawer
+          = yield :foot
+
+      .content
+        .scrollable
+          .container-fluid.main role='main'
+            .row
+              = yield :local_warning_message
+
+            - if title
+              .row.header-row
+                .col-md-8.col-xs-9
+                  h1== title
+
+                .col-md-4.col-xs-3.actions
+                  = yield :actions
+
+            = yield
+
+      / .drawer
+      /   .close-button
+      /     i.fa.fa-times
+      /   .content-inner
+      /     .scrollable
+      /       .container-fluid
+      /         .row
+      /           .col-md-12
+      /             h1 Right sidebar
+
+      = yield :foot
+    - if !current_locomotive_account.super_admin && current_locomotive_account.account_package && current_locomotive_account.account_package.package.free_trial?
+      = render 'locomotive/shared/footer'
+  = render 'locomotive/shared/modal'

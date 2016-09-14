@@ -1,0 +1,104 @@
+section#pricing.parallax-window-plan data-image-src="/assets/landing_page/about/3.jpg" data-parallax="scroll"
+  .container-fluid
+    .text-center
+      h2 Pricing
+      br
+      h4 Choose a payment plan that works
+      br
+    .row
+      - Locomotive::Package.find_by(name: "Trial") do |package|
+        .col-lg-3.col-sm-3.col-md-3.monthly-price
+          .panel.panel-default.text-center
+            .panel-heading
+              h4 = package.name
+            .panel-body
+              p.strong
+                = package.no_of_pages
+                '
+                'Pages
+              p.strong
+                = package.no_of_images
+                '
+                'Images
+              p.strong
+                = package.site_count
+                '
+                'Site
+            .panel-footer
+              h3 = package.price
+              br
+              h4 per month
+
+        - Locomotive::Package.where(expire_type: "monthly").each do |package|
+          .col-lg-3.col-sm-3.col-md-3.monthly-price
+            .panel.panel-default.text-center
+              .panel-heading
+                h4 = package.name
+              .panel-body
+                p.strong
+                 = package.no_of_pages
+                 '
+                 'Pages
+                p.strong
+                  = package.no_of_images
+                  '
+                  'Images
+                p.strong
+                  = package.site_count
+                  '
+                  'Sites
+              .panel-footer
+                h3 = package.price
+                br
+                h4 per month
+        - Locomotive::Package.find_by(name: "Trial") do |package|
+          .col-lg-3.col-sm-3.col-md-3.yearly-price
+            .panel.panel-default.text-center
+              .panel-heading
+                h4 = package.name
+              .panel-body
+                p.strong
+                  = package.no_of_pages
+                  '
+                  'Pages
+                p.strong
+                  = package.no_of_images
+                  '
+                  'Images
+                p.strong
+                  = package.site_count
+                  '
+                  'Site
+              .panel-footer
+                h3 = package.price
+                br
+                h4 per month
+        - Locomotive::Package.where(expire_type: "yearly").each do |package|
+          .col-lg-3.col-sm-3.col-md-3.yearly-price
+            .panel.panel-default.text-center
+              .panel-heading
+                h4 = package.name
+              .panel-body
+                p.strong
+                  = package.no_of_pages
+                  '
+                  'Pages
+                p.strong
+                  = package.no_of_images
+                  '
+                  'Images
+                p.strong
+                  = package.site_count
+                  '
+                  'Sites
+              .panel-footer
+                h3 = package.price
+                br
+                h4 per month
+    .row
+      .col-lg-12.text-center
+        span monthly billing
+        label.switch
+          input type="checkbox" /
+          .slider.round
+        span yearly billing
