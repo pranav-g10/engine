@@ -1,1 +1,0 @@
-var search_data = {"index":{"searchIndex":["readme","routes"],"longSearchIndex":["",""],"info":[["README","","README_rdoc.html","","<p>NOTES\n<p>HEADERS\n<p>APP_ID: Mandatory, allowed values are &#39;cablo_user&#39;,\n&#39;cablo_driver&#39;, &#39;cablo_vendor&#39;, …\n"],["Routes","","rdoc/Routes_rdoc.html","","<p>GET /api/v1/otp/verify\n\n"]]}}
