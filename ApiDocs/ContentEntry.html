@@ -119,31 +119,24 @@
 
         <div class="method-description">
           
-          <pre>== Get Content Records
-uri - http://localhost:3000/locomotive/sample/api/v3/content_types.json
-=== REQUEST
- { &quot;account&quot;:{
-     &quot;email&quot;: &quot;jaack@gmail.com&quot;,
-     &quot;name&quot; :&quot;JackDoe&quot;,
-     &quot;password&quot;: &quot;easyone&quot;,
-     &quot;password_confirmation&quot;: &quot;easyone&quot;
- } }
-=== RESPONSE
- {&quot;_id&quot;:&quot;5650f0a087f6436cbc000000&quot;,
-  &quot;created_at&quot;:&quot;2015-11-21T22:30:56Z&quot;,
-  &quot;updated_at&quot;:&quot;2015-11-21T22:30:56Z&quot;,
-  &quot;name&quot;:&quot;Jack Doe&quot;,&quot;email&quot;:&quot;jack@doe.net&quot;,
-  &quot;locale&quot;:&quot;en&quot;,
-  &quot;api_key&quot;:&quot;92f2e03b57b3f31f485ecf4d99bc94ea20eee862&quot;,
-  &quot;super_admin&quot;:false,
-  &quot;local_admin&quot;:false }</pre>
+          <p>Get Content Entries for given model</p>
+
+<pre>GET http://localhost:3000/locomotive/handle/api/v3/content_types/projects/entries.json?auth_token=KP9EDnCYFRTGXdbaDyhi
+
+REQUEST:
+RESPONSE:
+ {&quot;_id&quot;:&quot;5650f0a287f6436cbc000007&quot;,&quot;created_at&quot;:&quot;2015-11-21T22:30:58Z&quot;,&quot;updated_at&quot;:&quot;2015-11-21T22:30:58Z&quot;,&quot;_slug&quot;:&quot;hello-world&quot;,&quot;content_type_slug&quot;:&quot;articles&quot;,&quot;_label&quot;:&quot;Hello
+ world&quot;,&quot;_position&quot;:0,&quot;_visible&quot;:true,&quot;seo_title&quot;:null,&quot;meta_keywords&quot;:null,&quot;meta_description&quot;:null,&quot;title&quot;:&quot;Hello
+ world&quot;},{&quot;_id&quot;:&quot;5650f0a287f6436cbc00000a&quot;,&quot;created_at&quot;:&quot;2015-11-21T22:30:58Z&quot;,&quot;updated_at&quot;:&quot;2015-11-21T22:30:58Z&quot;,&quot;_slug&quot;:&quot;lorem-ipsum&quot;,&quot;content_type_slug&quot;:&quot;articles&quot;,&quot;_label&quot;:&quot;Lorem
+ ipsum&quot;,&quot;_position&quot;:1,&quot;_visible&quot;:true,&quot;seo_title&quot;:null,&quot;meta_keywords&quot;:null,&quot;meta_description&quot;:null,&quot;title&quot;:&quot;Lorem
+ ipsum&quot;}</pre>
 <hr>
           
           
 
           
           <div class="method-source-code" id="index-source">
-            <pre><span class="ruby-comment"># File spec/dummy/api_docs/content_entry.rb, line 22</span>
+            <pre><span class="ruby-comment"># File spec/dummy/api_docs/content_entry.rb, line 15</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">index</span>;<span class="ruby-keyword">end</span></pre>
           </div>
           
