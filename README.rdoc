@@ -1,0 +1,5 @@
+== NOTES
+
+==== HEADERS
+* X-Locomotive-Account-Email: admin@locomotivecms.com
+* X-Locomotive-Account-Token: E2aoXzMxkFsLnCcmCcc_
