@@ -52,6 +52,11 @@ module Locomotive
     def create
       authorize ContentEntry
       @content_entry = service.create(content_entry_params)
+      if content_entry_params['image'] && (content_entry_params['image'].content_type.include? "video")
+        movie = FFMPEG::Movie.new(@content_entry.image.path)
+        screenshot = movie.screenshot("#{@content_entry.id}.jpg", seek_time: 5, resolution: '320x240')
+        @content_entry.update(video_image: screenshot)
+      end
       respond_with @content_entry, location: -> { location_after_persisting }
     end
 

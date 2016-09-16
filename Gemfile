@@ -18,6 +18,8 @@ gem 'prawn-table'
 gem 'dotenv-rails'
 gem 'locomotive-heroku', git: 'https://github.com/sweetymehta/locomotive-heroku.git'
 gem 'carrierwave-aws'
+gem 'streamio-ffmpeg'
+
 group :production do
   gem 'rails_12factor'  # heroku specific
 
