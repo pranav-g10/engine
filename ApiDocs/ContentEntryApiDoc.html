@@ -76,6 +76,10 @@
     
     <li ><a href="#method-i-index">#index</a>
     
+    <li ><a href="#method-i-show">#show</a>
+    
+    <li ><a href="#method-i-update">#update</a>
+    
   </ul>
 </div>
 
@@ -125,7 +129,7 @@
           
           <p>Create Content Entries for given model</p>
 
-<pre>GET http://localhost:3000/locomotive/handle/api/v3/content_types/projects/entries.json
+<pre>POST http://localhost:3000/locomotive/handle/api/v3/content_types/projects/entries.json
 
 REQUEST:
   {
@@ -186,7 +190,7 @@ RESPONSE:
 
           
           <div class="method-source-code" id="delete-source">
-            <pre><span class="ruby-comment"># File spec/dummy/api_docs/content_entry.rb, line 45</span>
+            <pre><span class="ruby-comment"># File spec/dummy/api_docs/content_entry.rb, line 62</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">delete</span>;<span class="ruby-keyword">end</span></pre>
           </div>
           
@@ -230,6 +234,94 @@ RESPONSE:
           <div class="method-source-code" id="index-source">
             <pre><span class="ruby-comment"># File spec/dummy/api_docs/content_entry.rb, line 15</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">index</span>;<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-show" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">show</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>GET  current Site</p>
+
+<pre>Get http://localhost:3000/locomotive/sample/api/v3/current_site.json?auth_token=E2aoXzMxkFsLnCcmCcc_</pre>
+
+<p>REQUEST: “”</p>
+
+<p>RESPONSE:</p>
+
+<pre class="ruby">{<span class="ruby-string">&quot;_id&quot;</span><span class="ruby-operator">:</span><span class="ruby-string">&quot;5650f08c87f6436c94000006&quot;</span>,<span class="ruby-string">&quot;created_at&quot;</span><span class="ruby-operator">:</span><span class="ruby-string">&quot;2015-11-21T22:30:36Z&quot;</span>,<span class="ruby-string">&quot;updated_at&quot;</span><span class="ruby-operator">:</span><span class="ruby-string">&quot;2015-11-21T22:31:02Z&quot;</span>,<span class="ruby-string">&quot;name&quot;</span><span class="ruby-operator">:</span><span class="ruby-string">&quot;John
+ Doe&quot;</span>,<span class="ruby-string">&quot;handle&quot;</span><span class="ruby-operator">:</span><span class="ruby-string">&quot;sample&quot;</span>,<span class="ruby-string">&quot;seo_title&quot;</span><span class="ruby-operator">:</span><span class="ruby-identifier">null</span>,<span class="ruby-string">&quot;meta_keywords&quot;</span><span class="ruby-operator">:</span><span class="ruby-identifier">null</span>,<span class="ruby-string">&quot;meta_description&quot;</span><span class="ruby-operator">:</span><span class="ruby-identifier">null</span>,<span class="ruby-string">&quot;robots_txt&quot;</span><span class="ruby-operator">:</span><span class="ruby-identifier">null</span>,<span class="ruby-string">&quot;cache_enabled&quot;</span><span class="ruby-operator">:</span><span class="ruby-keyword">false</span>,<span class="ruby-string">&quot;locales&quot;</span><span class="ruby-operator">:</span>[<span class="ruby-string">&quot;en&quot;</span>],<span class="ruby-string">&quot;domains&quot;</span><span class="ruby-operator">:</span>[<span class="ruby-string">&quot;sample.example.com&quot;</span>],<span class="ruby-string">&quot;memberships&quot;</span><span class="ruby-operator">:</span>[{<span class="ruby-string">&quot;_id&quot;</span><span class="ruby-operator">:</span><span class="ruby-string">&quot;5650f08c87f6436c94000009&quot;</span>,<span class="ruby-string">&quot;created_at&quot;</span><span class="ruby-operator">:</span><span class="ruby-identifier">null</span>,<span class="ruby-string">&quot;updated_at&quot;</span><span class="ruby-operator">:</span><span class="ruby-identifier">null</span>,<span class="ruby-string">&quot;role&quot;</span><span class="ruby-operator">:</span><span class="ruby-string">&quot;admin&quot;</span>,<span class="ruby-string">&quot;account_id&quot;</span><span class="ruby-operator">:</span><span class="ruby-string">&quot;5650f08c87f6436c94000000&quot;</span>,<span class="ruby-string">&quot;name&quot;</span><span class="ruby-operator">:</span><span class="ruby-string">&quot;John
+  Doe&quot;</span>,<span class="ruby-string">&quot;role_name&quot;</span><span class="ruby-operator">:</span><span class="ruby-string">&quot;Administrator&quot;</span>,<span class="ruby-string">&quot;email&quot;</span><span class="ruby-operator">:</span><span class="ruby-string">&quot;admin@locomotivecms.com&quot;</span>}],<span class="ruby-string">&quot;timezone&quot;</span><span class="ruby-operator">:</span><span class="ruby-string">&quot;UTC&quot;</span>,<span class="ruby-string">&quot;picture_url&quot;</span><span class="ruby-operator">:</span><span class="ruby-identifier">null</span>,<span class="ruby-string">&quot;content_version&quot;</span><span class="ruby-operator">:</span><span class="ruby-value">1448145062</span>,<span class="ruby-string">&quot;template_version&quot;</span><span class="ruby-operator">:</span><span class="ruby-value">1448145061</span>,<span class="ruby-string">&quot;picture_thumbnail_url&quot;</span><span class="ruby-operator">:</span><span class="ruby-identifier">null</span>,<span class="ruby-string">&quot;preview_url&quot;</span><span class="ruby-operator">:</span><span class="ruby-string">&quot;http://localhost:3000/locomotive/sample/preview&quot;</span>,<span class="ruby-string">&quot;sign_in_url&quot;</span><span class="ruby-operator">:</span><span class="ruby-string">&quot;http://localhost:3000/locomotive/sign_in&quot;</span>}
+</pre>
+<hr>
+          
+          
+
+          
+          <div class="method-source-code" id="show-source">
+            <pre><span class="ruby-comment"># File spec/dummy/api_docs/content_entry.rb, line 75</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">show</span>;<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-update" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">update</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Update Content Entries for given model</p>
+
+<pre>PUT /locomotive/sample/api/v3/content_types/articles/entries/random-title.json
+
+REQUEST:
+  {
+    &quot;auth_token&quot;: &quot;Wx6h9cyEsuut3gugjQxN&quot;,
+    &quot;content_entry&quot;: {&quot;name&quot;: &quot;Hello world&quot;
+     }
+  }
+RESPONSE:
+   {&quot;_id&quot;:&quot;5650f0a487f6436cbc00001f&quot;,&quot;created_at&quot;:&quot;2015-11-21T22:31:00Z&quot;,&quot;updated_at&quot;:&quot;2015-11-21T22:31:00Z&quot;,&quot;_slug&quot;:&quot;random-title&quot;,&quot;content_type_slug&quot;:&quot;articles&quot;,&quot;_label&quot;:&quot;Random
+       title!&quot;,&quot;_position&quot;:0,&quot;_visible&quot;:true,&quot;seo_title&quot;:null,&quot;meta_keywords&quot;:null,&quot;meta_description&quot;:null,&quot;title&quot;:&quot;Random
+       title!&quot;}</pre>
+<hr>
+          
+          
+
+          
+          <div class="method-source-code" id="update-source">
+            <pre><span class="ruby-comment"># File spec/dummy/api_docs/content_entry.rb, line 49</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">update</span>;<span class="ruby-keyword">end</span></pre>
           </div>
           
         </div>
