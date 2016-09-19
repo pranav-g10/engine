@@ -12,6 +12,7 @@ module ApiDocs
     #       "password_confirmation": "easyone"
     #   } }
     #
+    #
     # RESPONSE:
     #   {"_id":"5650f0a087f6436cbc000000",
     #    "created_at":"2015-11-21T22:30:56Z",
