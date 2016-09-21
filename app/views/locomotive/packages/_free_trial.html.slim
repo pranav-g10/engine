@@ -23,4 +23,7 @@
       '
       'Site
       br
+      - if current_locomotive_account.account_package
+        = link_to 'Free Trial', activate_package_path(package), class: 'btn btn-primary', disabled: true
+      - else
         = link_to 'Free Trial', activate_package_path(package), class: 'btn btn-primary'
