@@ -49,7 +49,7 @@ section
                 'Sites
                 br
                   - css_class = active_package?(current_locomotive_account.account_package, package) ? "active_package" : ""
-                  = button_tag "#{package.name}", class: "btn btn-primary #{css_class}", disabled: disabled_package?(current_locomotive_account.account_package, package), title: active ? 'activated':'', data:  val ? { toggle: 'modal', target: '#myModal' } : ''
+                  = button_tag "#{package.name}", class: "btn btn-primary #{css_class}", disabled: disabled_package?(current_locomotive_account.account_package, package), title: active_package?(current_locomotive_account.account_package, package) ? 'activated':'', data:  active_package?(current_locomotive_account.account_package, package) ? { toggle: 'modal', target: '#myModal' } : ''
                   /= link_to "#{package.name}", activate_package_path(package), class: 'btn btn-primary'
     br
     br
