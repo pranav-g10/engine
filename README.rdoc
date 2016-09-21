@@ -1,5 +1,5 @@
 == NOTES
-* Domain: https://pixylz.herokuapp.com
+* Domain: https://pixylz-app.herokuapp.com
 
 ==== HEADERS
 * X-Locomotive-Account-Email: admin@locomotivecms.com
